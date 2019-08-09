@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using UnityEngine;
 
 public class Office : MonoBehaviour
@@ -7,6 +7,6 @@ public class Office : MonoBehaviour
     {
         var employees = FindObjectsOfType<StressConsumerController>();
         float averagePercentageStress = employees.Average(x => x.PercentageStressLevel);
-        Debug.Log(averagePercentageStress);
+//        Debug.Log(averagePercentageStress);
     }
 }
