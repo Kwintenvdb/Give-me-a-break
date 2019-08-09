@@ -9,6 +9,6 @@ public class Office : MonoBehaviour
     {
         var employees = FindObjectsOfType<Employee>();
         float averagePercentageStress = employees.Average(employee => employee.GetPercentageStress());
-        Debug.Log(averagePercentageStress);
+//        Debug.Log(averagePercentageStress);
     }
 }
