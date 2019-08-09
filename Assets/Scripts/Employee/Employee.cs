@@ -1,26 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Employee : MonoBehaviour
 {
-    [SerializeField] private StressController stressController;
-    [SerializeField] private float stressThreshold = 100;
+    [SerializeField] private StressConsumerController stressConsumerController;
     [SerializeField] private EmployeeState state;
 
-    // Update is called once per frame
+    public EmployeeState State => state;
+
+    private void Awake()
+    {
+        if (stressConsumerController != null)
+        {
+            stressConsumerController.Employee = this;
+        }
+    }
+
     void Update()
     {
-        float stressLevel = stressController.GetStressLevel();
-        if (stressLevel >= stressThreshold)
+        if (stressConsumerController.IsOverstressed())
         {
             state = EmployeeState.OverStressed;
         }
         // show different visual states based on stress level
     }
 
-    public float GetPercentageStress()
-    {
-        return stressController.GetStressLevel() / stressThreshold;
-    }
 }
