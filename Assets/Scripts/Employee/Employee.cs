@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class Employee : MonoBehaviour
+public class Employee : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] private StressController stressController;
     [SerializeField] private MovementController movementController;
     [SerializeField] private float stressThreshold = 100;
     [SerializeField] private EmployeeState state;
     [SerializeField] private WorkStation workStation; // Every employee must have a reference to their work station
-
+    
     private void Start()
     {
         // For debugging purposes
@@ -62,5 +60,15 @@ public class Employee : MonoBehaviour
     private void SetState(EmployeeState state)
     {
         this.state = state;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        SelectionController.Instance.OnEmployeeClicked(this);
+    }
+
+    public void SetSelected(bool selected)
+    {
+        GetComponentInChildren<Renderer>().material.color = selected ? Color.blue : Color.white;
     }
 }
