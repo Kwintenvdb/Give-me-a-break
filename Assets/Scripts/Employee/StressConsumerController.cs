@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -12,16 +13,19 @@ public class StressConsumerController : MonoBehaviour
     private readonly List<StressGeneratorController> _stressGenerators = new List<StressGeneratorController>();
 
     public float PercentageStressLevel => stressLevel / stressThreshold;
+    public bool IsOverstressed => stressLevel >= stressThreshold;
 
-
-    void Update()
+    private void Start()
     {
-        ApplyStressPerSecond();
+        if (Employee == null)
+        {
+            throw new InvalidOperationException("StressConsumerController has no Employee");
+        }
     }
 
-    public bool IsOverstressed()
+    private void Update()
     {
-        return stressLevel >= stressThreshold;
+        ApplyStressPerSecond();
     }
 
     private void ApplyStressPerSecond()

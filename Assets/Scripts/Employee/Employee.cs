@@ -10,8 +10,20 @@ public class Employee : MonoBehaviour
     [SerializeField] private EmployeeState state;
     [SerializeField] private WorkStation workStation; // Every employee must have a reference to their work station
 
+    public EmployeeState State => state;
+
+    private void Awake()
+    {
+        stressConsumerController.Employee = this;
+    }
+
     private void Start()
     {
+        if (workStation == null)
+        {
+            throw new InvalidOperationException("Employee does not have a Workstation");
+        }
+        
         // For debugging purposes
 //        var breakLocation = FindObjectOfType<BreakLocation>();
 //        AssignToBreakLocation(breakLocation);
@@ -20,7 +32,7 @@ public class Employee : MonoBehaviour
 
     void Update()
     {
-        if (stressConsumerController.IsOverstressed())
+        if (stressConsumerController.IsOverstressed)
         {
             state = EmployeeState.OverStressed;
             movementController.StopWalking();
