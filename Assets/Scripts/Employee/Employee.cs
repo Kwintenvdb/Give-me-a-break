@@ -13,6 +13,7 @@ public class Employee : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
     [SerializeField] private string employeeName;
     [SerializeField] private EmployeeInfo employeeInfo;
     [SerializeField] private GameObject selectionObject;
+    [SerializeField] private EmployeeStressVisuals stressVisuals;
 
     public StressConsumerController StressConsumerController => stressConsumerController;
     public MoneyConsumerController MoneyConsumerController => moneyConsumerController;
@@ -44,6 +45,8 @@ public class Employee : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
 
     void Update()
     {
+        stressVisuals.SetStressLevel(PercentageStressLevel);
+        
         if (stressConsumerController.IsOverstressed && state != EmployeeState.OverStressed)
         {
             Died?.Invoke(this);

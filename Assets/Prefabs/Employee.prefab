@@ -61,7 +61,7 @@ MonoBehaviour:
   stressPerSecond: 0.5
   stressMultiplierPerSecond: 1
   stressFixed: 0
-  activeStates: 0000000001000000
+  activeStates: 00000000
 --- !u!54 &2346067716386946813
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -102,11 +102,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1171034754843963205}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.34760433, y: -0.24147913, z: 0.09314028, w: 0.9012125}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3, y: 1.3, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.20000002}
   m_Children: []
-  m_Father: {fileID: 1995268183126331837}
+  m_Father: {fileID: 4023627043374658688}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7643334950755875044
@@ -168,6 +168,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1995268183126331837}
   - component: {fileID: 7969385520428469444}
+  - component: {fileID: 119792053169605945}
+  - component: {fileID: 633786677923085060}
   m_Layer: 8
   m_Name: CatSprite
   m_TagString: Untagged
@@ -184,11 +186,10 @@ Transform:
   m_GameObject: {fileID: 1424651376955795153}
   m_LocalRotation: {x: 0.34760433, y: -0.24147913, z: 0.09314028, w: 0.9012125}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
-  m_Children:
-  - {fileID: 5518611321107473699}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_Children: []
   m_Father: {fileID: 4023627043374658688}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 42.184, y: -30, z: 0}
 --- !u!212 &7969385520428469444
 SpriteRenderer:
@@ -228,7 +229,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cb131e0363902384e947e8f9d1490f4f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7f34ed1d8cdb017459cfcc2c301120c6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -239,6 +240,45 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &119792053169605945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424651376955795153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 905637f8dbb60124caf96b5ca924c492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 633786677923085060}
+  renderer: {fileID: 7969385520428469444}
+  happy: {fileID: 21300000, guid: cb131e0363902384e947e8f9d1490f4f, type: 3}
+  satisfied: {fileID: 21300000, guid: cb131e0363902384e947e8f9d1490f4f, type: 3}
+  average: {fileID: 21300000, guid: c17aeb5769a56bc4eb1cd746af489015, type: 3}
+  sad: {fileID: 21300000, guid: c17aeb5769a56bc4eb1cd746af489015, type: 3}
+  exhausted: {fileID: 21300000, guid: 8ce17d864e1f3c24c818fa45ae35bd10, type: 3}
+  scared: {fileID: 21300000, guid: 7f34ed1d8cdb017459cfcc2c301120c6, type: 3}
+--- !u!95 &633786677923085060
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424651376955795153}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1ae55a7eb8a372d46985b96b5b23c669, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4023627042222765423
 GameObject:
   m_ObjectHideFlags: 0
@@ -625,6 +665,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 5518611321107473699}
   - {fileID: 1995268183126331837}
   m_Father: {fileID: 4023627043451219518}
   m_RootOrder: 0
@@ -857,6 +898,7 @@ MonoBehaviour:
   employeeName: Emil
   employeeInfo: {fileID: 4023627043013543657}
   selectionObject: {fileID: 1171034754843963205}
+  stressVisuals: {fileID: 119792053169605945}
 --- !u!114 &4023627043451219491
 MonoBehaviour:
   m_ObjectHideFlags: 0
