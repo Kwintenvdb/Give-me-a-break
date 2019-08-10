@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class ActionButtonsController : MonoBehaviour
 {
-    [SerializeField] private CanvasGroup canvasGroup;
+    [SerializeField] private Button[] buttonsToToggle;
 
     private void Start()
     {
@@ -13,6 +14,9 @@ public class ActionButtonsController : MonoBehaviour
     private void OnSelectionChanged()
     {
         bool enabled = SelectionController.Instance.SelectedEmployees.Count > 0;
-        canvasGroup.interactable = enabled;
+        foreach (var button in buttonsToToggle)
+        {
+            button.interactable = enabled;
+        }
     }
 }
