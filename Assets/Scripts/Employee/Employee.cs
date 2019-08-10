@@ -80,6 +80,7 @@ public class Employee : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
     private void SetVisible(bool visible)
     {
         renderer.SetActive(visible);
+        employeeInfo.SetVisible(visible);
     }
     
     // Should be called externally - after giving a command to a group of employees
