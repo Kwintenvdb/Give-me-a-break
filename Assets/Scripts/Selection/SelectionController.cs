@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SelectionController : MonoBehaviour
@@ -7,8 +8,9 @@ public class SelectionController : MonoBehaviour
     [SerializeField] private float minSelectionRectSize = 10f;
     
     public static SelectionController Instance { get; private set; }
-
     public List<Employee> SelectedEmployees { get; } = new List<Employee>();
+
+    public event Action SelectionChanged;
 
     private GUIStyle selectionBoxStyle;
     
@@ -76,7 +78,7 @@ public class SelectionController : MonoBehaviour
     private void FindEmployeesInRect(Rect rect)
     {
         var screenRect = GUIUtility.GUIToScreenRect(rect);
-        var employees = FindObjectsOfType<Employee>();
+        var employees = FindObjectsOfType<Employee>().Where(CanBeSelected);
         var mainCam = Camera.main;
         foreach (var employee in employees)
         {
@@ -95,13 +97,18 @@ public class SelectionController : MonoBehaviour
         }
     }
 
+    private bool CanBeSelected(Employee employee)
+    {
+        return employee.State != EmployeeState.OverStressed;
+    }
+
     public void OnEmployeeClicked(Employee employee)
     {
         if (SelectedEmployees.Contains(employee))
         {
             DeselectEmployee(employee);
         }
-        else
+        else if (CanBeSelected(employee))
         {
             SelectedEmployees.Clear();
             SelectEmployee(employee);
@@ -114,12 +121,22 @@ public class SelectionController : MonoBehaviour
         {
             SelectedEmployees.Add(employee);
             employee.SetSelected(true);
+            employee.Died += OnEmployeeDied;
+            
+            SelectionChanged?.Invoke();
         }
+    }
+
+    private void OnEmployeeDied(Employee employee)
+    {
+        DeselectEmployee(employee);
     }
 
     private void DeselectEmployee(Employee employee)
     {
         SelectedEmployees.Remove(employee);
         employee.SetSelected(false);
+        
+        SelectionChanged?.Invoke();
     }
 }

@@ -23,6 +23,8 @@ public class Employee : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     public WorkStation AssignedWorkStation => workStation;
     public BreakLocation AssignedBreakLocation { get; private set; }
 
+    public event Action<Employee> Died;
+
     private void Awake()
     {
         stressConsumerController.Employee = this;
@@ -43,7 +45,9 @@ public class Employee : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     {
         if (stressConsumerController.IsOverstressed && state != EmployeeState.OverStressed)
         {
-            state = EmployeeState.OverStressed;
+            Died?.Invoke(this);
+            
+            SetState(EmployeeState.OverStressed);
             movementController.StopWalking();
             renderer.material.color = Color.red;
             audioController.PlayDeathClip();

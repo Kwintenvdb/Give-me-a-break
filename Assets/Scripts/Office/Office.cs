@@ -16,8 +16,11 @@ public class Office : MonoBehaviour
     void Update()
     {
         var employees = FindObjectsOfType<Employee>();
-        CalculateAveragePercentageStress(employees);
-        UpdateMoneyBalance(employees);
+        if (employees.Length > 0)
+        {
+            CalculateAveragePercentageStress(employees);
+            UpdateMoneyBalance(employees);
+        }
     }
 
     private void CalculateAveragePercentageStress(IEnumerable<Employee> employees)
