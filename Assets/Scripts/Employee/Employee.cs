@@ -12,6 +12,8 @@ public class Employee : MonoBehaviour, IPointerClickHandler
 
     public EmployeeState State => state;
 
+    private BreakLocation assignedBreakLocation;
+
     private void Awake()
     {
         stressConsumerController.Employee = this;
@@ -23,11 +25,6 @@ public class Employee : MonoBehaviour, IPointerClickHandler
         {
             throw new InvalidOperationException("Employee does not have a Workstation");
         }
-        
-        // For debugging purposes
-//        var breakLocation = FindObjectOfType<BreakLocation>();
-//        AssignToBreakLocation(breakLocation);
-//        MoveToWorkStation();
     }
 
     void Update()
@@ -43,18 +40,36 @@ public class Employee : MonoBehaviour, IPointerClickHandler
     // Should be called externally - after giving a command to a group of employees
     public void AssignToBreakLocation(BreakLocation breakLocation)
     {
-        SetState(EmployeeState.Walking);
-        // TODO only move if the employee is not there already
-        var movementTarget = breakLocation.GetTargetSlot();
-        movementController.SetMovementTarget(movementTarget, () =>
+        RemoveFromAssignedBreakLocation();
+        
+        var slot = breakLocation.AssignEmployeeToFreeSlot(this);
+        if (slot != null)
         {
-            Debug.Log("Target reached");
-            SetState(EmployeeState.Break);
-        });
+            assignedBreakLocation = breakLocation;
+            
+            SetState(EmployeeState.Walking);
+            // TODO only move if the employee is not there already
+            var movementTarget = slot.Target;
+            movementController.SetMovementTarget(movementTarget, () =>
+            {
+                Debug.Log("Target reached");
+                SetState(EmployeeState.Break);
+            });
+        }
+    }
+
+    private void RemoveFromAssignedBreakLocation()
+    {
+        if (assignedBreakLocation != null)
+        {
+            assignedBreakLocation.RemoveEmployee(this);
+        }
     }
 
     public void MoveToWorkStation()
     {
+        RemoveFromAssignedBreakLocation();
+        
         SetState(EmployeeState.Walking);
         var movementTarget = workStation.GetTargetSlot();
         movementController.SetMovementTarget(movementTarget, () =>

@@ -1,13 +1,32 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BreakLocation : MonoBehaviour
 {
-    [SerializeField] private Transform targetSlot;
+    [SerializeField] private List<LocationSlot> slots = new List<LocationSlot>();
 
-    public Transform GetTargetSlot()
+    public LocationSlot AssignEmployeeToFreeSlot(Employee employee)
     {
-        return targetSlot;
+        var slot = GetFreeSlot();
+        if (slot != null)
+        {
+            slot.AssignEmployee(employee);
+        }
+        return slot;
+    }
+
+    public void RemoveEmployee(Employee employee)
+    {
+        var assignedSlot = slots.FirstOrDefault(slot => slot.AssignedEmployee == employee);
+        if (assignedSlot != null)
+        {
+            assignedSlot.RemoveAssignedEmployee();
+        }
+    }
+    
+    private LocationSlot GetFreeSlot()
+    {
+        return slots.FirstOrDefault(slot => !slot.IsOccupied);
     }
 }
