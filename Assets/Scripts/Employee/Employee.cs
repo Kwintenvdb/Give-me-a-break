@@ -1,18 +1,29 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Employee : MonoBehaviour
 {
-    [SerializeField] private StressController stressController;
+    [SerializeField] private StressConsumerController stressConsumerController;
     [SerializeField] private MovementController movementController;
-    [SerializeField] private float stressThreshold = 100;
     [SerializeField] private EmployeeState state;
     [SerializeField] private WorkStation workStation; // Every employee must have a reference to their work station
 
+    public EmployeeState State => state;
+
+    private void Awake()
+    {
+        stressConsumerController.Employee = this;
+    }
+
     private void Start()
     {
+        if (workStation == null)
+        {
+            throw new InvalidOperationException("Employee does not have a Workstation");
+        }
+        
         // For debugging purposes
 //        var breakLocation = FindObjectOfType<BreakLocation>();
 //        AssignToBreakLocation(breakLocation);
@@ -21,18 +32,12 @@ public class Employee : MonoBehaviour
 
     void Update()
     {
-        float stressLevel = stressController.GetStressLevel();
-        if (stressLevel >= stressThreshold)
+        if (stressConsumerController.IsOverstressed)
         {
             state = EmployeeState.OverStressed;
             movementController.StopWalking();
         }
         // show different visual states based on stress level
-    }
-
-    public float GetPercentageStress()
-    {
-        return stressController.GetStressLevel() / stressThreshold;
     }
 
     // Should be called externally - after giving a command to a group of employees
