@@ -19,6 +19,7 @@ public class EmployeeStressVisuals : MonoBehaviour
 
     private Sprite GetSprite(float stressLevel)
     {
+        animator.SetBool("Pulsate", false);
         if (stressLevel <= 0.15f)
         {
             return happy;
