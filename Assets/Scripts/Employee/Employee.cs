@@ -1,7 +1,5 @@
 using UnityEngine.EventSystems;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Employee : MonoBehaviour, IPointerClickHandler
@@ -29,7 +27,7 @@ public class Employee : MonoBehaviour, IPointerClickHandler
         // For debugging purposes
 //        var breakLocation = FindObjectOfType<BreakLocation>();
 //        AssignToBreakLocation(breakLocation);
-        MoveToWorkStation();
+//        MoveToWorkStation();
     }
 
     void Update()
