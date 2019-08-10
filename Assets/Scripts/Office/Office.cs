@@ -17,9 +17,7 @@ public class Office : MonoBehaviour
     {
         var employees = FindObjectsOfType<Employee>();
         CalculateAveragePercentageStress(employees);
-        moneyBalance += employees
-            .Select(employee => employee.MoneyConsumerController)
-            .Sum(moneyMaker => moneyMaker.CalculateMoneyGenerated());
+        UpdateMoneyBalance(employees);
     }
 
     private void CalculateAveragePercentageStress(IEnumerable<Employee> employees)
