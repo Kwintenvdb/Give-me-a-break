@@ -84,9 +84,6 @@ public class SelectionController : MonoBehaviour
             var employeeScreenPos = mainCam.WorldToScreenPoint(employee.transform.position);
             employeeScreenPos.y = Screen.height - employeeScreenPos.y;
             
-            Debug.Log(rect);
-            Debug.Log(employeeScreenPos);
-            
             if (screenRect.Contains(employeeScreenPos))
             {
                 SelectEmployee(employee);
