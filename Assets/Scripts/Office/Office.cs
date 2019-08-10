@@ -22,6 +22,7 @@ public class Office : MonoBehaviour
     [SerializeField] private MoneyDisplay moneyDisplay;
 
     public OfficeState State => state;
+    public float MoneyBalance => moneyBalance;
 
     void Update()
     {

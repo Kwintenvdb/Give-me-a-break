@@ -12,24 +12,9 @@ public class SelectionController : MonoBehaviour
 
     public event Action SelectionChanged;
 
-    private GUIStyle selectionBoxStyle;
-    
     private void Awake()
     {
         Instance = this;
-        
-        // Create transparent white texture
-        var texture = new Texture2D(2, 2);
-        var colors = new Color[4];
-        for (int i = 0; i < colors.Length; ++i)
-        {
-            colors[i] = new Color(255, 255, 255, 0.4f);
-        }
-        texture.SetPixels(colors);
-        texture.Apply();
-            
-        selectionBoxStyle = new GUIStyle();
-        selectionBoxStyle.normal.background = texture;
     }
 
     private Vector3? startMousePos;
@@ -50,8 +35,9 @@ public class SelectionController : MonoBehaviour
 
             // Otherwise this might interfere with the click detection on individual employees
             if (rect.height < minSelectionRectSize || rect.width < minSelectionRectSize) return;
-            
-            GUI.Box(rect, string.Empty, selectionBoxStyle);
+
+            var style = CreateDragBoxGuiStyle();
+            GUI.Box(rect, string.Empty, style);
             
             // Do this only after we "stop" selecting? E.g. continuously or just a single time?
             FindEmployeesInRect(rect);
@@ -60,6 +46,23 @@ public class SelectionController : MonoBehaviour
         {
             startMousePos = null;
         }
+    }
+
+    private GUIStyle CreateDragBoxGuiStyle()
+    {
+        // Create transparent white texture
+        var texture = new Texture2D(2, 2);
+        var colors = new Color[4];
+        for (int i = 0; i < colors.Length; ++i)
+        {
+            colors[i] = new Color(255, 255, 255, 0.4f);
+        }
+        texture.SetPixels(colors);
+        texture.Apply();
+            
+        var style = new GUIStyle();
+        style.normal.background = texture;
+        return style;
     }
     
     private Rect FromDragPoints(Vector2 p1, Vector2 p2)
