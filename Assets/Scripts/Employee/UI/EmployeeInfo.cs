@@ -7,6 +7,9 @@ public class EmployeeInfo : MonoBehaviour
     [SerializeField] private Text nameText;
     [SerializeField] private Text stressLevelText;
     [SerializeField] private Text stateText;
+    [SerializeField] private RectTransform panel;
+
+    private bool isExpanded = false;
 
     private void Awake()
     {
@@ -16,7 +19,9 @@ public class EmployeeInfo : MonoBehaviour
     private void Update()
     {
         float stressAsPercentage = employee.PercentageStressLevel * 100;
-        stressLevelText.text = string.Format("{0:N}% stressed", stressAsPercentage);
+        stressLevelText.text = isExpanded
+            ? $"{stressAsPercentage:N}% stressed"
+            : $"{stressAsPercentage:N}%";
         stateText.text = GetStateText(employee);
     }
 
@@ -36,11 +41,19 @@ public class EmployeeInfo : MonoBehaviour
             case EmployeeState.OverStressed:
                 return "About to explode";
         }
+
         return string.Empty;
     }
 
     public void SetVisible(bool visible)
     {
         gameObject.SetActive(visible);
+    }
+
+    public void SetExpanded(bool expanded)
+    {
+        isExpanded = expanded;
+        stateText.gameObject.SetActive(expanded);
+        panel.sizeDelta = new Vector2(expanded ? 250 : 150, expanded ? 100 : 70);
     }
 }

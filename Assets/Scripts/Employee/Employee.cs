@@ -34,7 +34,8 @@ public class Employee : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
         moneyConsumerController.Employee = this;
         
         SetSelected(false);
-        employeeInfo.SetVisible(false);
+        employeeInfo.SetExpanded(false);
+//        employeeInfo.SetVisible(false);
     }
 
     private void Start()
@@ -147,11 +148,13 @@ public class Employee : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
     // Hover handlers
     public void OnPointerEnter(PointerEventData eventData)
     {
-        employeeInfo.SetVisible(true);
+        employeeInfo.SetExpanded(true);
+//        employeeInfo.SetVisible(true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        employeeInfo.SetVisible(false);
+        employeeInfo.SetExpanded(false);
+//        employeeInfo.SetVisible(false);
     }
 }
