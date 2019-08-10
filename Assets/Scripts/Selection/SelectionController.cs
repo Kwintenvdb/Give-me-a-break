@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SelectionController : MonoBehaviour
 {
+    [SerializeField] private float minSelectionRectSize = 10f;
+    
     public static SelectionController Instance { get; private set; }
 
     public List<Employee> SelectedEmployees { get; } = new List<Employee>();
@@ -30,23 +32,6 @@ public class SelectionController : MonoBehaviour
 
     private Vector3? startMousePos;
     private Vector3? currentMousePos;
-    
-//    private void Update()
-//    {
-//        if (Input.GetMouseButton(0))
-//        {
-//            if (startMousePos == null)
-//            {
-//                startMousePos = Input.mousePosition;
-//            }
-//
-//            currentMousePos = Input.mousePosition;
-//        }
-//        else
-//        {
-//            startMousePos = null;
-//        }
-//    }
 
     private void OnGUI()
     {
@@ -61,13 +46,39 @@ public class SelectionController : MonoBehaviour
             
             float width = currentMousePos.Value.x - startMousePos.Value.x;
             float height = currentMousePos.Value.y - startMousePos.Value.y;
+
+            // Otherwise this might interfere with the click detection on individual employees
+            if (height < minSelectionRectSize || width < minSelectionRectSize) return;
+            
             var rect = new Rect(startMousePos.Value.x, startMousePos.Value.y, width, height);
             
             GUI.Box(rect, string.Empty, selectionBoxStyle);
+            
+            // Do this only after we "stop" selecting? E.g. continuously or just a single time?
+            FindEmployeesInRect(rect);
         }
         else
         {
             startMousePos = null;
+        }
+    }
+
+    private void FindEmployeesInRect(Rect rect)
+    {
+        var screenRect = GUIUtility.GUIToScreenRect(rect);
+        var employees = FindObjectsOfType<Employee>();
+        var mainCam = Camera.main;
+        foreach (var employee in employees)
+        {
+            var employeeScreenPos = mainCam.WorldToScreenPoint(employee.transform.position);
+            if (screenRect.Contains(employeeScreenPos))
+            {
+                SelectEmployee(employee);
+            }
+            else
+            {
+                DeselectEmployee(employee);
+            }
         }
     }
 
@@ -86,8 +97,11 @@ public class SelectionController : MonoBehaviour
 
     private void SelectEmployee(Employee employee)
     {
-        SelectedEmployees.Add(employee);
-        employee.SetSelected(true);
+        if (!SelectedEmployees.Contains(employee))
+        {
+            SelectedEmployees.Add(employee);
+            employee.SetSelected(true);
+        }
     }
 
     private void DeselectEmployee(Employee employee)

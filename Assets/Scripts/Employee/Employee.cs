@@ -8,6 +8,7 @@ public class Employee : MonoBehaviour, IPointerClickHandler
     [SerializeField] private float stressThreshold = 100;
     [SerializeField] private EmployeeState state;
     [SerializeField] private WorkStation workStation; // Every employee must have a reference to their work station
+    [SerializeField] private Renderer renderer;
     
     private void Start()
     {
@@ -69,6 +70,6 @@ public class Employee : MonoBehaviour, IPointerClickHandler
 
     public void SetSelected(bool selected)
     {
-        GetComponentInChildren<Renderer>().material.color = selected ? Color.blue : Color.white;
+        renderer.material.color = selected ? Color.blue : Color.white;
     }
 }
