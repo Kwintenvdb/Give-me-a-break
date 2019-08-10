@@ -7,8 +7,8 @@ public class StressConsumerController : MonoBehaviour
 {
     [SerializeField] private float stressLevel = 50;
     [SerializeField] private float stressThreshold = 100;
-    [SerializeField] private float baseStressPerSecond = 1;
-    [SerializeField] private List<EmployeeState> baseStressActiveStates = new List<EmployeeState>{EmployeeState.Working, EmployeeState.Walking};
+    [SerializeField] private float baseStressPerSecond = 0;
+    [SerializeField] private List<EmployeeState> baseStressActiveStates = new List<EmployeeState>();
     
     private readonly List<StressGeneratorController> _stressGenerators = new List<StressGeneratorController>();
 
