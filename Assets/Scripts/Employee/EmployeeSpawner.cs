@@ -1,28 +1,33 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EmployeeSpawner : MonoBehaviour
 {
     [SerializeField] private Employee employeePrefab;
     [SerializeField] private Transform spawnLocation;
     [SerializeField] private float minStressLevel = 10;
-    [SerializeField] private float maxStressLevel = 40;
-    
-    private IEnumerable<WorkStation> workStations;
+    [SerializeField] private float maxStressLevel = 30;
+    [SerializeField] private int initialWorkerCount = 25;
+
+    private IEnumerable<WorkStation> _workStations;
 //    private List<Employee> employees = new List<Employee>();
     
     private void Awake()
     {
-        workStations = FindObjectsOfType<WorkStation>();
+        _workStations = FindObjectsOfType<WorkStation>();
         StartCoroutine(SpawnEmployees());
     }
 
     // Start of day
     private IEnumerator SpawnEmployees()
     {
-        foreach (var workStation in workStations.Take(15))
+        foreach (var workStation in _workStations
+            .OrderBy(a => Random.Range(0,1))
+            .Take(initialWorkerCount))
         {
             SpawnEmployee(workStation);
             yield return new WaitForSeconds(1f);

@@ -616,7 +616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fa38a607ef37d648b3d0e78416db784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stressPerSecond: -4
+  stressPerSecond: -8
   stressMultiplierPerSecond: 1
   stressFixed: 0
   activeStates: 02000000
@@ -3463,6 +3463,7 @@ MonoBehaviour:
   spawnLocation: {fileID: 716609535}
   minStressLevel: 10
   maxStressLevel: 40
+  initialWorkerCount: 25
 --- !u!4 &909928335
 Transform:
   m_ObjectHideFlags: 0
@@ -5882,7 +5883,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lunchRoom: {fileID: 176024007}
   toilets: {fileID: 810951758}
-  vacation: {fileID: 1782558315}
+  vacation: {fileID: 0}
   moneyBalance: 0
   state: 0
   officeStateTenseLevel: 0.33
