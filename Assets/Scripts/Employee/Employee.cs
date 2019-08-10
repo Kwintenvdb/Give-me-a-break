@@ -2,16 +2,20 @@ using UnityEngine.EventSystems;
 using System;
 using UnityEngine;
 
-public class Employee : MonoBehaviour, IPointerClickHandler
+public class Employee : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private StressConsumerController stressConsumerController;
     [SerializeField] private MovementController movementController;
     [SerializeField] private EmployeeState state;
     [SerializeField] private WorkStation workStation; // Every employee must have a reference to their work station
     [SerializeField] private Renderer renderer;
+    [SerializeField] private string employeeName;
+    [SerializeField] private EmployeeInfo employeeInfo;
 
     public EmployeeState State => state;
-
+    public string EmployeeName => employeeName;
+    public float PercentageStressLevel => stressConsumerController.PercentageStressLevel;
+    
     private BreakLocation assignedBreakLocation;
 
     private void Awake()
@@ -92,5 +96,16 @@ public class Employee : MonoBehaviour, IPointerClickHandler
     public void SetSelected(bool selected)
     {
         renderer.material.color = selected ? Color.blue : Color.white;
+    }
+
+    // Hover handlers
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        employeeInfo.SetVisible(true);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        employeeInfo.SetVisible(false);
     }
 }
