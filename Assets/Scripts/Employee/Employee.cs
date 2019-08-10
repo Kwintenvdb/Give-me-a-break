@@ -45,7 +45,7 @@ public class Employee : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             movementController.StopWalking();
             renderer.material.color = Color.red;
             audioController.PlayDeathClip();
-            Destroy(gameObject, 15);
+            Destroy(gameObject, 9);
         }
         // show different visual states based on stress level
     }
