@@ -307,6 +307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetSlot: {fileID: 7324423949706062587}
+  workstationName: Desk 005.1
 --- !u!1 &7324423951303450891
 GameObject:
   m_ObjectHideFlags: 0

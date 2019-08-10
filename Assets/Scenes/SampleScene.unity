@@ -1982,81 +1982,6 @@ PrefabInstance:
       propertyPath: workStation
       value: 
       objectReference: {fileID: 73122462}
-    - target: {fileID: 4023627043583670749, guid: fcee9953246ce96449ce598463e64b70,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 250
-      objectReference: {fileID: 0}
-    - target: {fileID: 4023627042337316916, guid: fcee9953246ce96449ce598463e64b70,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4023627042337316916, guid: fcee9953246ce96449ce598463e64b70,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4023627042337316916, guid: fcee9953246ce96449ce598463e64b70,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4023627042337316916, guid: fcee9953246ce96449ce598463e64b70,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4023627042715750932, guid: fcee9953246ce96449ce598463e64b70,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4023627042715750932, guid: fcee9953246ce96449ce598463e64b70,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4023627042715750932, guid: fcee9953246ce96449ce598463e64b70,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4023627042715750932, guid: fcee9953246ce96449ce598463e64b70,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4023627042715750932, guid: fcee9953246ce96449ce598463e64b70,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4023627042222765416, guid: fcee9953246ce96449ce598463e64b70,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4023627042222765416, guid: fcee9953246ce96449ce598463e64b70,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4023627042222765416, guid: fcee9953246ce96449ce598463e64b70,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4023627042222765416, guid: fcee9953246ce96449ce598463e64b70,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4023627042222765416, guid: fcee9953246ce96449ce598463e64b70,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcee9953246ce96449ce598463e64b70, type: 3}
 --- !u!1001 &7324423949342700528
@@ -2070,11 +1995,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WorkStation
-      objectReference: {fileID: 0}
-    - target: {fileID: 7324423950146379651, guid: e271f0f266d840d44ae1378e3e8da036,
-        type: 3}
-      propertyPath: workstationName
-      value: Desk 005.1
       objectReference: {fileID: 0}
     - target: {fileID: 7324423950146379652, guid: e271f0f266d840d44ae1378e3e8da036,
         type: 3}
