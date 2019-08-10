@@ -34,7 +34,7 @@ public class MovementController : MonoBehaviour
 
     private bool HasReachedTarget(Transform target)
     {
-        return Vector3.Distance(transform.position, target.position) < 0.05f; // TODO play with this threshold a bit
+        return Vector3.Distance(transform.position, target.position) < 0.025f; // TODO play with this threshold a bit
     }
 
     public void StopWalking()
