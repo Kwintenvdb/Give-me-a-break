@@ -10,9 +10,9 @@ public class Employee : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     [SerializeField] private AudioController audioController;
     [SerializeField] private EmployeeState state;
     [SerializeField] private WorkStation workStation; // Every employee must have a reference to their work station
-    [SerializeField] private Renderer renderer;
     [SerializeField] private string employeeName;
     [SerializeField] private EmployeeInfo employeeInfo;
+    [SerializeField] private GameObject selectionObject;
 
     public StressConsumerController StressConsumerController => stressConsumerController;
     public MoneyConsumerController MoneyConsumerController => moneyConsumerController;
@@ -30,6 +30,7 @@ public class Employee : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         stressConsumerController.Employee = this;
         moneyConsumerController.Employee = this;
         
+        SetSelected(false);
         employeeInfo.SetVisible(false);
     }
 
@@ -49,7 +50,7 @@ public class Employee : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             
             SetState(EmployeeState.OverStressed);
             movementController.StopWalking();
-            renderer.material.color = Color.red;
+//            renderer.material.color = Color.red;
             audioController.PlayDeathClip();
             Destroy(gameObject, 9);
         }
@@ -116,7 +117,7 @@ public class Employee : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
     public void SetSelected(bool selected)
     {
-        renderer.material.color = selected ? Color.blue : Color.white;
+        selectionObject.SetActive(selected);
     }
 
     // Hover handlers
