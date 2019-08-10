@@ -2,7 +2,7 @@ using UnityEngine.EventSystems;
 using System;
 using UnityEngine;
 
-public class Employee : MonoBehaviour, IPointerClickHandler
+public class Employee : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private StressConsumerController stressConsumerController;
     [SerializeField] private MoneyConsumerController moneyConsumerController;
@@ -10,12 +10,17 @@ public class Employee : MonoBehaviour, IPointerClickHandler
     [SerializeField] private EmployeeState state;
     [SerializeField] private WorkStation workStation; // Every employee must have a reference to their work station
     [SerializeField] private Renderer renderer;
+    [SerializeField] private string employeeName;
+    [SerializeField] private EmployeeInfo employeeInfo;
 
     public StressConsumerController StressConsumerController => stressConsumerController;
     public MoneyConsumerController MoneyConsumerController => moneyConsumerController;
     public EmployeeState State => state;
+    public string EmployeeName => employeeName;
+    public float PercentageStressLevel => stressConsumerController.PercentageStressLevel;
 
-    private BreakLocation assignedBreakLocation;
+    public WorkStation AssignedWorkStation => workStation;
+    public BreakLocation AssignedBreakLocation { get; private set; }
 
     private void Awake()
     {
@@ -49,7 +54,7 @@ public class Employee : MonoBehaviour, IPointerClickHandler
         var slot = breakLocation.AssignEmployeeToFreeSlot(this);
         if (slot != null)
         {
-            assignedBreakLocation = breakLocation;
+            AssignedBreakLocation = breakLocation;
             
             SetState(EmployeeState.Walking);
             // TODO only move if the employee is not there already
@@ -64,9 +69,10 @@ public class Employee : MonoBehaviour, IPointerClickHandler
 
     private void RemoveFromAssignedBreakLocation()
     {
-        if (assignedBreakLocation != null)
+        if (AssignedBreakLocation != null)
         {
-            assignedBreakLocation.RemoveEmployee(this);
+            AssignedBreakLocation.RemoveEmployee(this);
+            AssignedBreakLocation = null;
         }
     }
 
@@ -96,5 +102,16 @@ public class Employee : MonoBehaviour, IPointerClickHandler
     public void SetSelected(bool selected)
     {
         renderer.material.color = selected ? Color.blue : Color.white;
+    }
+
+    // Hover handlers
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        employeeInfo.SetVisible(true);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        employeeInfo.SetVisible(false);
     }
 }

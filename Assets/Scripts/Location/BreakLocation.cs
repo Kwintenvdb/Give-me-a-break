@@ -5,6 +5,9 @@ using UnityEngine;
 public class BreakLocation : MonoBehaviour
 {
     [SerializeField] private List<LocationSlot> slots = new List<LocationSlot>();
+    [SerializeField] private string locationName;
+
+    public string LocationName => locationName;
 
     public LocationSlot AssignEmployeeToFreeSlot(Employee employee)
     {
