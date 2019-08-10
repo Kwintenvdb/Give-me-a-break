@@ -46,6 +46,7 @@ public class StressConsumerController : MonoBehaviour
             .Aggregate(1f, (product, stressMultiplier) => product * stressMultiplier);
 
         stressLevel += stressPerSecond * Time.deltaTime;
+        stressLevel = Mathf.Clamp(stressLevel, 0, stressThreshold);
     }
 
     private void OnTriggerEnter(Collider other)
