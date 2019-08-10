@@ -7,6 +7,7 @@ public class Employee : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     [SerializeField] private StressConsumerController stressConsumerController;
     [SerializeField] private MoneyConsumerController moneyConsumerController;
     [SerializeField] private MovementController movementController;
+    [SerializeField] private AudioController audioController;
     [SerializeField] private EmployeeState state;
     [SerializeField] private WorkStation workStation; // Every employee must have a reference to their work station
     [SerializeField] private Renderer renderer;
@@ -38,10 +39,13 @@ public class Employee : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
     void Update()
     {
-        if (stressConsumerController.IsOverstressed)
+        if (stressConsumerController.IsOverstressed && state != EmployeeState.OverStressed)
         {
             state = EmployeeState.OverStressed;
             movementController.StopWalking();
+            renderer.material.color = Color.red;
+            audioController.PlayDeathClip();
+            Destroy(gameObject, 15);
         }
         // show different visual states based on stress level
     }
