@@ -9,10 +9,17 @@ public class Office : MonoBehaviour
     [SerializeField] private BreakLocation toilets;
     [SerializeField] private float moneyBalance = 0;
 
+    // Office State
+    [SerializeField] private OfficeState state;
+    [SerializeField] private float officeStateTenseLevel = 0.33f;
+    [SerializeField] private float officeStateRiotLevel = 0.66f;
+
     // UI
     [SerializeField] private StressBar stressBar;
     [SerializeField] private MoneyDisplay moneyDisplay;
-    
+
+    public OfficeState State => state;
+
     void Update()
     {
         var employees = FindObjectsOfType<Employee>();
@@ -29,6 +36,23 @@ public class Office : MonoBehaviour
             .Select(employee => employee.StressConsumerController)
             .Average(x => x.PercentageStressLevel);
         stressBar.SetStressLevel(averagePercentageStress);
+        UpdateOfficeState(averagePercentageStress);
+    }
+
+    private void UpdateOfficeState(float averagePercentageStress)
+    {
+        if (averagePercentageStress > officeStateRiotLevel)
+        {
+            state = OfficeState.Riot;
+        }
+        else if (averagePercentageStress > officeStateTenseLevel)
+        {
+            state = OfficeState.Tense;
+        }
+        else
+        {
+            state = OfficeState.Chill;
+        }
     }
 
     private void UpdateMoneyBalance(IEnumerable<Employee> employees)
