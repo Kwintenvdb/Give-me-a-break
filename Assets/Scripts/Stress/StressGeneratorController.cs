@@ -4,7 +4,7 @@ using UnityEngine;
 public class StressGeneratorController : MonoBehaviour
 {
     [SerializeField] private int stressPerSecond;
-    [SerializeField] private int stressMultiplierPerSecond;
+    [SerializeField] private int stressMultiplierPerSecond = 1;
     [SerializeField] private int stressFixed;
     [SerializeField] private List<EmployeeState> activeStates;
 
