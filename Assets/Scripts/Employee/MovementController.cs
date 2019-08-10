@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
-    [SerializeField] private float speed = 50;
+    [SerializeField] private float speed = 2;
     
     private Transform target;
     private Action targetReached;
