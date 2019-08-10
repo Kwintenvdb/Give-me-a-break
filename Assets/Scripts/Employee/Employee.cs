@@ -15,8 +15,9 @@ public class Employee : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     public EmployeeState State => state;
     public string EmployeeName => employeeName;
     public float PercentageStressLevel => stressConsumerController.PercentageStressLevel;
-    
-    private BreakLocation assignedBreakLocation;
+
+    public WorkStation AssignedWorkStation => workStation;
+    public BreakLocation AssignedBreakLocation { get; private set; }
 
     private void Awake()
     {
@@ -49,7 +50,7 @@ public class Employee : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         var slot = breakLocation.AssignEmployeeToFreeSlot(this);
         if (slot != null)
         {
-            assignedBreakLocation = breakLocation;
+            AssignedBreakLocation = breakLocation;
             
             SetState(EmployeeState.Walking);
             // TODO only move if the employee is not there already
@@ -64,9 +65,10 @@ public class Employee : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
     private void RemoveFromAssignedBreakLocation()
     {
-        if (assignedBreakLocation != null)
+        if (AssignedBreakLocation != null)
         {
-            assignedBreakLocation.RemoveEmployee(this);
+            AssignedBreakLocation.RemoveEmployee(this);
+            AssignedBreakLocation = null;
         }
     }
 

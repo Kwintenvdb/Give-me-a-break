@@ -17,15 +17,18 @@ public class EmployeeInfo : MonoBehaviour
     {
         float stressAsPercentage = employee.PercentageStressLevel * 100;
         stressLevelText.text = string.Format("{0:#}% stressed", stressAsPercentage);
-        stateText.text = GetStateText(employee.State);
+        stateText.text = GetStateText(employee);
     }
 
-    private string GetStateText(EmployeeState state)
+    private string GetStateText(Employee employee)
     {
-        switch (state)
+        switch (employee.State)
         {
             case EmployeeState.Walking:
-                return "Walking to..."; // TODO return workstation or break location name
+                string target = employee.AssignedBreakLocation != null
+                    ? employee.AssignedBreakLocation.LocationName
+                    : employee.AssignedWorkStation.WorkstationName;
+                return "Walking to " + target;
             case EmployeeState.Working:
                 return "Working";
             case EmployeeState.Break:

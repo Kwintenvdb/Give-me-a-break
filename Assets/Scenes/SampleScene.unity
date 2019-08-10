@@ -475,6 +475,7 @@ MonoBehaviour:
   - {fileID: 1119186651}
   - {fileID: 2120950890}
   - {fileID: 135795210}
+  locationName: Lunch room
 --- !u!4 &176024008
 Transform:
   m_ObjectHideFlags: 0
@@ -568,18 +569,6 @@ MonoBehaviour:
   stressMultiplierPerSecond: 1
   stressFixed: 0
   activeStates: 02000000
---- !u!114 &247195525 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4023627043013543657, guid: fcee9953246ce96449ce598463e64b70,
-    type: 3}
-  m_PrefabInstance: {fileID: 4023627042783338860}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0fd747bb554635479572225fee3a023, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &289037866
 GameObject:
   m_ObjectHideFlags: 0
@@ -997,6 +986,7 @@ MonoBehaviour:
   slots:
   - {fileID: 289037868}
   - {fileID: 1159037563}
+  locationName: Toilet
 --- !u!65 &810951759
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1992,11 +1982,11 @@ PrefabInstance:
       propertyPath: workStation
       value: 
       objectReference: {fileID: 73122462}
-    - target: {fileID: 4023627043451219516, guid: fcee9953246ce96449ce598463e64b70,
+    - target: {fileID: 4023627043583670749, guid: fcee9953246ce96449ce598463e64b70,
         type: 3}
-      propertyPath: employeeInfo
-      value: 
-      objectReference: {fileID: 247195525}
+      propertyPath: m_SizeDelta.x
+      value: 250
+      objectReference: {fileID: 0}
     - target: {fileID: 4023627042337316916, guid: fcee9953246ce96449ce598463e64b70,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -2065,11 +2055,6 @@ PrefabInstance:
     - target: {fileID: 4023627042222765416, guid: fcee9953246ce96449ce598463e64b70,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4023627042222765417, guid: fcee9953246ce96449ce598463e64b70,
-        type: 3}
-      propertyPath: m_FontData.m_FontStyle
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2085,6 +2070,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WorkStation
+      objectReference: {fileID: 0}
+    - target: {fileID: 7324423950146379651, guid: e271f0f266d840d44ae1378e3e8da036,
+        type: 3}
+      propertyPath: workstationName
+      value: Desk 005.1
       objectReference: {fileID: 0}
     - target: {fileID: 7324423950146379652, guid: e271f0f266d840d44ae1378e3e8da036,
         type: 3}
