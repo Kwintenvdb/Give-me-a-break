@@ -10,6 +10,7 @@ public class EmployeeStressVisuals : MonoBehaviour
     [SerializeField] private Sprite sad;
     [SerializeField] private Sprite exhausted;
     [SerializeField] private Sprite scared;
+    [SerializeField] private Sprite superScared;
     
     public void SetStressLevel(float stressLevel)
     {
@@ -24,26 +25,29 @@ public class EmployeeStressVisuals : MonoBehaviour
         {
             return happy;
         }
-        else if (stressLevel <= 0.3f)
+        if (stressLevel <= 0.3f)
         {
             return satisfied;
         }
-        else if (stressLevel <= 0.45f)
+        if (stressLevel <= 0.45f)
         {
             return average;
         }
-        else if (stressLevel <= 0.6f)
+        if (stressLevel <= 0.6f)
         {
             return sad;
         }
-        else if (stressLevel <= 0.75f)
+        if (stressLevel <= 0.75f)
         {
             return exhausted;
         }
-        else
+        if (stressLevel <= 0.9f)
         {
             animator.SetBool("Pulsate", true);
             return scared;
         }
+
+        animator.SetBool("Pulsate", true);
+        return superScared;
     }
 }

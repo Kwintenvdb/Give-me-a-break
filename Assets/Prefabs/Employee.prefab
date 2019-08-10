@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fa38a607ef37d648b3d0e78416db784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stressPerSecond: 0.5
+  stressPerSecond: 2
   stressMultiplierPerSecond: 1
   stressFixed: 0
   activeStates: 00000000
@@ -255,12 +255,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 633786677923085060}
   renderer: {fileID: 7969385520428469444}
-  happy: {fileID: 21300000, guid: cb131e0363902384e947e8f9d1490f4f, type: 3}
-  satisfied: {fileID: 21300000, guid: cb131e0363902384e947e8f9d1490f4f, type: 3}
-  average: {fileID: 21300000, guid: c17aeb5769a56bc4eb1cd746af489015, type: 3}
-  sad: {fileID: 21300000, guid: c17aeb5769a56bc4eb1cd746af489015, type: 3}
+  happy: {fileID: 21300000, guid: 29b58b20621f4de40ae0d6e1bec0ca63, type: 3}
+  satisfied: {fileID: 21300000, guid: 11e8149255a4a40439c27a02a2592508, type: 3}
+  average: {fileID: 21300000, guid: ff1f9f5ffc01e6f4f9b5625d93eda941, type: 3}
+  sad: {fileID: 21300000, guid: 6ddc025c2afbec34e9b7264ce20acf10, type: 3}
   exhausted: {fileID: 21300000, guid: 8ce17d864e1f3c24c818fa45ae35bd10, type: 3}
-  scared: {fileID: 21300000, guid: 7f34ed1d8cdb017459cfcc2c301120c6, type: 3}
+  scared: {fileID: 21300000, guid: d363962090b194042be56fcfc5aa46d5, type: 3}
+  superScared: {fileID: 21300000, guid: 7f34ed1d8cdb017459cfcc2c301120c6, type: 3}
 --- !u!95 &633786677923085060
 Animator:
   serializedVersion: 3
