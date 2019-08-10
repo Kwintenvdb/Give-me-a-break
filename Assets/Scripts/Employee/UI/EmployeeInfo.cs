@@ -16,7 +16,7 @@ public class EmployeeInfo : MonoBehaviour
     private void Update()
     {
         float stressAsPercentage = employee.PercentageStressLevel * 100;
-        stressLevelText.text = string.Format("{0:#}% stressed", stressAsPercentage);
+        stressLevelText.text = string.Format("{0:N}% stressed", stressAsPercentage);
         stateText.text = GetStateText(employee);
     }
 
