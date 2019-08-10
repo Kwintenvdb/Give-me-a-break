@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EmployeeSpawner : MonoBehaviour
@@ -21,7 +22,7 @@ public class EmployeeSpawner : MonoBehaviour
     // Start of day
     private IEnumerator SpawnEmployees()
     {
-        foreach (var workStation in workStations)
+        foreach (var workStation in workStations.Take(5))
         {
             SpawnEmployee(workStation);
             yield return new WaitForSeconds(1f);

@@ -136,7 +136,7 @@ public class SelectionController : MonoBehaviour
         DeselectEmployee(employee);
     }
 
-    private void DeselectEmployee(Employee employee)
+    public void DeselectEmployee(Employee employee)
     {
         SelectedEmployees.Remove(employee);
         employee.SetSelected(false);
