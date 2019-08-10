@@ -5,8 +5,11 @@ using UnityEngine;
 
 public class Office : MonoBehaviour
 {
+    // Break locations
     [SerializeField] private BreakLocation lunchRoom;
     [SerializeField] private BreakLocation toilets;
+    [SerializeField] private BreakLocation vacation;
+    
     [SerializeField] private float moneyBalance = 0;
 
     // Office State
@@ -76,6 +79,11 @@ public class Office : MonoBehaviour
     public void SendSelectedToToilet()
     {
         ForEachSelected(employee => employee.AssignToBreakLocation(toilets));
+    }
+
+    public void SendSelectedOnVacation()
+    {
+        ForEachSelected(employee => employee.SendOnVacation(vacation));
     }
 
     private void ForEachSelected(Action<Employee> action)

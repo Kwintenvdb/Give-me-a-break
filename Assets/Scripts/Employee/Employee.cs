@@ -1,5 +1,6 @@
 using UnityEngine.EventSystems;
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Employee : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
@@ -14,6 +15,7 @@ public class Employee : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
     [SerializeField] private EmployeeInfo employeeInfo;
     [SerializeField] private GameObject selectionObject;
     [SerializeField] private EmployeeStressVisuals stressVisuals;
+    [SerializeField] private GameObject renderer;
 
     public StressConsumerController StressConsumerController => stressConsumerController;
     public MoneyConsumerController MoneyConsumerController => moneyConsumerController;
@@ -60,8 +62,27 @@ public class Employee : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
         // show different visual states based on stress level
     }
 
+    public void SendOnVacation(BreakLocation vacation)
+    {
+        AssignToBreakLocation(vacation, () => { StartCoroutine(DisappearForVacation()); });
+    }
+
+    private IEnumerator DisappearForVacation()
+    {
+        SetVisible(false);
+        SelectionController.Instance.DeselectEmployee(this);
+        yield return new WaitForSeconds(15);
+        SetVisible(true);
+        MoveToWorkStation();
+    }
+
+    private void SetVisible(bool visible)
+    {
+        renderer.SetActive(visible);
+    }
+    
     // Should be called externally - after giving a command to a group of employees
-    public void AssignToBreakLocation(BreakLocation breakLocation)
+    public void AssignToBreakLocation(BreakLocation breakLocation, Action locationReached = null)
     {
         RemoveFromAssignedBreakLocation();
         
@@ -75,8 +96,8 @@ public class Employee : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
             var movementTarget = slot.Target;
             movementController.SetMovementTarget(movementTarget, () =>
             {
-//                Debug.Log("Target reached");
                 SetState(EmployeeState.Break);
+                locationReached?.Invoke();
             });
         }
     }
