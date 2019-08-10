@@ -110,7 +110,11 @@ public class SelectionController : MonoBehaviour
         }
         else if (CanBeSelected(employee))
         {
-            SelectedEmployees.Clear();
+            var selectedCopy = new List<Employee>(SelectedEmployees);
+            foreach (var e in selectedCopy)
+            {
+                DeselectEmployee(e);
+            }
             SelectEmployee(employee);
         }
     }
