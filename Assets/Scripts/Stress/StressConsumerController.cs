@@ -45,9 +45,9 @@ public class StressConsumerController : MonoBehaviour
         var stressGenerators = _stressGenerators.Where(generator => generator.ActiveStates.Contains(Employee.State))
             .ToList();
         stressPerSecond += stressGenerators
-            .Sum(generator => generator.StressPerSecond);
+            .Sum(generator => generator.StressPerSecond());
         stressPerSecond *= stressGenerators
-            .Select(generator => generator.StressMultiplierPerSecond)
+            .Select(generator => generator.StressMultiplierPerSecond())
             .Aggregate(1f, (product, stressMultiplier) => product * stressMultiplier);
 
         stressLevel += stressPerSecond * Time.deltaTime;
