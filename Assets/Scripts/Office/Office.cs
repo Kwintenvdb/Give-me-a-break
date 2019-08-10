@@ -6,11 +6,18 @@ public class Office : MonoBehaviour
 {
     [SerializeField] private BreakLocation lunchRoom;
     [SerializeField] private BreakLocation toilets;
+    [SerializeField] private float moneyBalance = 0;
     
     void Update()
     {
-        var employees = FindObjectsOfType<StressConsumerController>();
-        float averagePercentageStress = employees.Average(x => x.PercentageStressLevel);
+        var employees = FindObjectsOfType<Employee>();
+        
+        var averagePercentageStress = employees
+            .Select(employee => employee.StressConsumerController)
+            .Average(x => x.PercentageStressLevel);
+        moneyBalance += employees
+            .Select(employee => employee.MoneyConsumerController)
+            .Sum(moneyMaker => moneyMaker.CalculateMoneyGenerated());
 //        Debug.Log(averagePercentageStress);
     }
 

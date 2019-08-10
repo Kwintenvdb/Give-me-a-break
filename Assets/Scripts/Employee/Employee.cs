@@ -5,16 +5,20 @@ using UnityEngine;
 public class Employee : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] private StressConsumerController stressConsumerController;
+    [SerializeField] private MoneyConsumerController moneyConsumerController;
     [SerializeField] private MovementController movementController;
     [SerializeField] private EmployeeState state;
     [SerializeField] private WorkStation workStation; // Every employee must have a reference to their work station
     [SerializeField] private Renderer renderer;
 
+    public StressConsumerController StressConsumerController => stressConsumerController;
+    public MoneyConsumerController MoneyConsumerController => moneyConsumerController;
     public EmployeeState State => state;
 
     private void Awake()
     {
         stressConsumerController.Employee = this;
+        moneyConsumerController.Employee = this;
     }
 
     private void Start()
