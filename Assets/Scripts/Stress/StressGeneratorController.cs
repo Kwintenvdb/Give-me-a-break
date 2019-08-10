@@ -3,16 +3,16 @@ using UnityEngine;
 
 public class StressGeneratorController : MonoBehaviour
 {
-    [SerializeField] private int stressPerSecond;
-    [SerializeField] private int stressMultiplierPerSecond = 1;
-    [SerializeField] private int stressFixed;
+    [SerializeField] private float stressPerSecond;
+    [SerializeField] private float stressMultiplierPerSecond = 1;
+    [SerializeField] private float stressFixed;
     [SerializeField] private List<EmployeeState> activeStates;
 
-    public int StressPerSecond => stressPerSecond;
+    public float StressPerSecond => stressPerSecond;
 
-    public int StressMultiplierPerSecond => stressMultiplierPerSecond;
+    public float StressMultiplierPerSecond => stressMultiplierPerSecond;
 
-    public int StressFixed => stressFixed;
+    public float StressFixed => stressFixed;
 
     public List<EmployeeState> ActiveStates => activeStates;
 }
