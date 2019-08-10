@@ -44,13 +44,10 @@ public class SelectionController : MonoBehaviour
 
             currentMousePos = Event.current.mousePosition;
             
-            float width = currentMousePos.Value.x - startMousePos.Value.x;
-            float height = currentMousePos.Value.y - startMousePos.Value.y;
+            var rect = FromDragPoints(startMousePos.Value, currentMousePos.Value);
 
             // Otherwise this might interfere with the click detection on individual employees
-            if (Mathf.Abs(height) < minSelectionRectSize || Mathf.Abs(width) < minSelectionRectSize) return;
-            
-            var rect = new Rect(startMousePos.Value.x, startMousePos.Value.y, width, height);
+            if (rect.height < minSelectionRectSize || rect.width < minSelectionRectSize) return;
             
             GUI.Box(rect, string.Empty, selectionBoxStyle);
             
@@ -61,6 +58,19 @@ public class SelectionController : MonoBehaviour
         {
             startMousePos = null;
         }
+    }
+    
+    private Rect FromDragPoints(Vector2 p1, Vector2 p2)
+    {
+        Vector2 diff = p1 - p2;
+        var rect = new Rect();
+        if (diff.x < 0) rect.x = p1.x;
+        else rect.x = p2.x;
+        if (diff.y < 0) rect.y = p1.y;
+        else rect.y = p2.y;
+        rect.width = Mathf.Abs(diff.x);
+        rect.height = Mathf.Abs(diff.y);
+        return rect;
     }
 
     private void FindEmployeesInRect(Rect rect)
@@ -73,6 +83,9 @@ public class SelectionController : MonoBehaviour
             // Gotta flip the Y axis here to be in GUI space
             var employeeScreenPos = mainCam.WorldToScreenPoint(employee.transform.position);
             employeeScreenPos.y = Screen.height - employeeScreenPos.y;
+            
+            Debug.Log(rect);
+            Debug.Log(employeeScreenPos);
             
             if (screenRect.Contains(employeeScreenPos))
             {
