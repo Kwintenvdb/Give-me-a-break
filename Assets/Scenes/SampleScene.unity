@@ -472,6 +472,8 @@ MonoBehaviour:
   slots:
   - {fileID: 1581329112}
   - {fileID: 1119186651}
+  - {fileID: 2120950890}
+  - {fileID: 135795210}
 --- !u!4 &176024008
 Transform:
   m_ObjectHideFlags: 0
@@ -2139,7 +2141,7 @@ GameObject:
   - component: {fileID: 1835339484}
   - component: {fileID: 1835339483}
   - component: {fileID: 1835339486}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2249,7 +2251,7 @@ GameObject:
   - component: {fileID: 1965492341}
   - component: {fileID: 1965492343}
   - component: {fileID: 1965492342}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
