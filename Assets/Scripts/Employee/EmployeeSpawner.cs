@@ -13,12 +13,12 @@ public class EmployeeSpawner : MonoBehaviour
     [SerializeField] private float maxStressLevel = 30;
     [SerializeField] private int initialWorkerCount = 25;
 
-    private IEnumerable<WorkStation> _workStations;
+    private List<WorkStation> _workStations;
 //    private List<Employee> employees = new List<Employee>();
     
     private void Awake()
     {
-        _workStations = FindObjectsOfType<WorkStation>();
+        _workStations = FindObjectsOfType<WorkStation>().ToList();
         StartCoroutine(SpawnEmployees());
     }
 
@@ -43,5 +43,18 @@ public class EmployeeSpawner : MonoBehaviour
 
         float baseStress = Random.Range(minStressLevel, maxStressLevel);
         employee.StressConsumerController.SetBaseStress(baseStress);
+    }
+
+    public void hireNewEmployee()
+    {
+        var occupiedWorkStations = FindObjectsOfType<Employee>()
+            .Select(employee => employee.AssignedWorkStation);
+        var freeWorkStation = _workStations
+            .Where(station => !occupiedWorkStations.Contains(station))
+            .OrderBy(a => Random.Range(0, 1))
+            .First();
+        
+        // add check if no workstation free
+        SpawnEmployee(freeWorkStation);
     }
 }
