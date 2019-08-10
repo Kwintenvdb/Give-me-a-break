@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -7,18 +8,24 @@ public class Office : MonoBehaviour
     [SerializeField] private BreakLocation lunchRoom;
     [SerializeField] private BreakLocation toilets;
     [SerializeField] private float moneyBalance = 0;
+
+    [SerializeField] private StressBar stressBar;
     
     void Update()
     {
         var employees = FindObjectsOfType<Employee>();
-        
-        var averagePercentageStress = employees
-            .Select(employee => employee.StressConsumerController)
-            .Average(x => x.PercentageStressLevel);
+        CalculateAveragePercentageStress(employees);
         moneyBalance += employees
             .Select(employee => employee.MoneyConsumerController)
             .Sum(moneyMaker => moneyMaker.CalculateMoneyGenerated());
-//        Debug.Log(averagePercentageStress);
+    }
+
+    private void CalculateAveragePercentageStress(IEnumerable<Employee> employees)
+    {
+        float averagePercentageStress = employees
+            .Select(employee => employee.StressConsumerController)
+            .Average(x => x.PercentageStressLevel);
+        stressBar.SetStressLevel(averagePercentageStress);
     }
 
     public void SendSelectedToWork()

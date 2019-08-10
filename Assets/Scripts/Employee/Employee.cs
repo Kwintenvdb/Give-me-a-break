@@ -26,6 +26,8 @@ public class Employee : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     {
         stressConsumerController.Employee = this;
         moneyConsumerController.Employee = this;
+        
+        employeeInfo.SetVisible(false);
     }
 
     private void Start()
