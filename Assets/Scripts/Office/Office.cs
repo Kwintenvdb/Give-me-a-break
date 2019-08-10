@@ -9,7 +9,9 @@ public class Office : MonoBehaviour
     [SerializeField] private BreakLocation toilets;
     [SerializeField] private float moneyBalance = 0;
 
+    // UI
     [SerializeField] private StressBar stressBar;
+    [SerializeField] private MoneyDisplay moneyDisplay;
     
     void Update()
     {
@@ -26,6 +28,14 @@ public class Office : MonoBehaviour
             .Select(employee => employee.StressConsumerController)
             .Average(x => x.PercentageStressLevel);
         stressBar.SetStressLevel(averagePercentageStress);
+    }
+
+    private void UpdateMoneyBalance(IEnumerable<Employee> employees)
+    {
+        moneyBalance += employees
+            .Select(employee => employee.MoneyConsumerController)
+            .Sum(moneyMaker => moneyMaker.CalculateMoneyGenerated());
+        moneyDisplay.SetMoney(moneyBalance);
     }
 
     public void SendSelectedToWork()
