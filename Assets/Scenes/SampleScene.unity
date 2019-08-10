@@ -411,6 +411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e2fff8f4719e8f44ae228051a82aa80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minSelectionRectSize: 10
 --- !u!4 &954179077
 Transform:
   m_ObjectHideFlags: 0
@@ -601,7 +602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stressLevel: 50
-  stressGrowthPerSecond: 1
+  stressThreshold: 100
 --- !u!114 &1795502635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -614,7 +615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1a75d62ca4e1e141b5e463275c4b7be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 0.5
 --- !u!4 &1795502638
 Transform:
   m_ObjectHideFlags: 0
@@ -642,9 +643,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a1a45102a0ff4a49800a01fbf2a3e7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stressController: {fileID: 1795502634}
+  stressConsumerController: {fileID: 1795502634}
   movementController: {fileID: 1795502635}
-  stressThreshold: 100
   state: 0
   workStation: {fileID: 73122462}
   renderer: {fileID: 1835339484}

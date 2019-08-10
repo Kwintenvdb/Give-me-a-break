@@ -48,7 +48,7 @@ public class SelectionController : MonoBehaviour
             float height = currentMousePos.Value.y - startMousePos.Value.y;
 
             // Otherwise this might interfere with the click detection on individual employees
-            if (height < minSelectionRectSize || width < minSelectionRectSize) return;
+            if (Mathf.Abs(height) < minSelectionRectSize || Mathf.Abs(width) < minSelectionRectSize) return;
             
             var rect = new Rect(startMousePos.Value.x, startMousePos.Value.y, width, height);
             
@@ -70,7 +70,10 @@ public class SelectionController : MonoBehaviour
         var mainCam = Camera.main;
         foreach (var employee in employees)
         {
+            // Gotta flip the Y axis here to be in GUI space
             var employeeScreenPos = mainCam.WorldToScreenPoint(employee.transform.position);
+            employeeScreenPos.y = Screen.height - employeeScreenPos.y;
+            
             if (screenRect.Contains(employeeScreenPos))
             {
                 SelectEmployee(employee);
