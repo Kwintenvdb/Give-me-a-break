@@ -570,6 +570,7 @@ GameObject:
   - component: {fileID: 4023627043451219518}
   - component: {fileID: 4023627043451219516}
   - component: {fileID: 4023627043451219491}
+  - component: {fileID: 665621684377007049}
   m_Layer: 0
   m_Name: Employee
   m_TagString: Untagged
@@ -608,6 +609,7 @@ MonoBehaviour:
   stressConsumerController: {fileID: 4023627043374658689}
   moneyConsumerController: {fileID: 7432875994040987395}
   movementController: {fileID: 4023627043451219491}
+  audioController: {fileID: 665621684377007049}
   state: 0
   workStation: {fileID: 0}
   renderer: {fileID: 4023627043374658692}
@@ -626,6 +628,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
+--- !u!114 &665621684377007049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4023627043451219490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 851b008667e3b1e43998fc01cefa641a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathClip: {fileID: 8300000, guid: 6aa0339a68d80f5438b708c36d2ec881, type: 3}
+  audioSource: {fileID: 0}
 --- !u!1 &4023627043583670748
 GameObject:
   m_ObjectHideFlags: 0
