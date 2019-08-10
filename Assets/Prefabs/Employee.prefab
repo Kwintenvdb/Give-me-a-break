@@ -62,6 +62,7 @@ MonoBehaviour:
   stressMultiplierPerSecond: 1
   stressFixed: 0
   activeStates: 00000000
+  employee: {fileID: 4023627043451219516}
 --- !u!54 &2346067716386946813
 Rigidbody:
   m_ObjectHideFlags: 0

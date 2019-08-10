@@ -8,9 +8,24 @@ public class StressGeneratorController : MonoBehaviour
     [SerializeField] private float stressFixed;
     [SerializeField] private List<EmployeeState> activeStates;
 
-    public float StressPerSecond => stressPerSecond;
+    [SerializeField] private Employee employee;
 
-    public float StressMultiplierPerSecond => stressMultiplierPerSecond;
+    public float StressPerSecond()
+    {
+        if (employee == null || activeStates.Contains(employee.State))
+            return stressPerSecond;
+        else
+            return 0f;
+    }
+
+    public float StressMultiplierPerSecond()
+    {
+        if (employee == null || activeStates.Contains(employee.State))
+            return stressMultiplierPerSecond;
+        else
+            return 1f;
+
+    }
 
     public float StressFixed => stressFixed;
 
