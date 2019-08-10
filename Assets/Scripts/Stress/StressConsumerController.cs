@@ -7,11 +7,12 @@ public class StressConsumerController : MonoBehaviour
 {
     [SerializeField] private float stressLevel = 50;
     [SerializeField] private float stressThreshold = 100;
-
-    public Employee Employee { get; set; }
-
+    [SerializeField] private float baseStressPerSecond = 1;
+    [SerializeField] private List<EmployeeState> baseStressActiveStates = new List<EmployeeState>{EmployeeState.Working, EmployeeState.Walking};
+    
     private readonly List<StressGeneratorController> _stressGenerators = new List<StressGeneratorController>();
 
+    public Employee Employee { get; set; }
     public float PercentageStressLevel => stressLevel / stressThreshold;
     public bool IsOverstressed => stressLevel >= stressThreshold;
 
@@ -30,18 +31,20 @@ public class StressConsumerController : MonoBehaviour
 
     private void ApplyStressPerSecond()
     {
-        // only consider generators with the correct state
+        var stressPerSecond = 0f;
+        if (baseStressActiveStates.Contains(Employee.State))
+        {
+            stressPerSecond += baseStressPerSecond;
+        }
+        
         var stressGenerators = _stressGenerators.Where(generator => generator.ActiveStates.Contains(Employee.State))
             .ToList();
-        // sum up fixed stress per second
-        var stressPerSecond = stressGenerators
+        stressPerSecond += stressGenerators
             .Sum(generator => generator.StressPerSecond);
-        // multiply with product of all stress multipliers
         stressPerSecond *= stressGenerators
             .Select(generator => generator.StressMultiplierPerSecond)
-            .Aggregate(1, (product, stressMultiplier) => product * stressMultiplier);
+            .Aggregate(1f, (product, stressMultiplier) => product * stressMultiplier);
 
-        // apply to stress level
         stressLevel += stressPerSecond * Time.deltaTime;
     }
 
