@@ -2,7 +2,7 @@ using UnityEngine.EventSystems;
 using System;
 using UnityEngine;
 
-public class Employee : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+public class Employee : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private StressConsumerController stressConsumerController;
     [SerializeField] private MoneyConsumerController moneyConsumerController;
@@ -110,7 +110,7 @@ public class Employee : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         this.state = state;
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public void OnPointerDown(PointerEventData eventData)
     {
         SelectionController.Instance.OnEmployeeClicked(this);
     }

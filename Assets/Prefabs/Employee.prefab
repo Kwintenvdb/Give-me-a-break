@@ -733,7 +733,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f7ff7422a027e447bd2cb51a0398ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseMoneyPerSecond: 104
+  baseMoneyPerSecond: 10
   baseMoneyActiveStates: 00000000
 --- !u!1 &4023627043451158251
 GameObject:
@@ -869,7 +869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1a75d62ca4e1e141b5e463275c4b7be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  speed: 8
 --- !u!114 &665621684377007049
 MonoBehaviour:
   m_ObjectHideFlags: 0
