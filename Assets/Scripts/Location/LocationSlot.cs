@@ -11,10 +11,20 @@ public class LocationSlot : MonoBehaviour
     public void AssignEmployee(Employee employee)
     {
         assignedEmployee = employee;
+        employee.Died += OnEmployeeDied;
+    }
+
+    private void OnEmployeeDied(Employee employee)
+    {
+        RemoveAssignedEmployee();
     }
 
     public void RemoveAssignedEmployee()
     {
+        if (assignedEmployee != null)
+        {
+            assignedEmployee.Died -= OnEmployeeDied;
+        }
         assignedEmployee = null;
     }
 }

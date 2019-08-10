@@ -24,6 +24,11 @@ public class StressConsumerController : MonoBehaviour
         }
     }
 
+    public void SetBaseStress(float baseStress)
+    {
+        stressLevel = baseStress;
+    }
+
     private void Update()
     {
         ApplyStressPerSecond();

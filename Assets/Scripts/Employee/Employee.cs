@@ -71,7 +71,7 @@ public class Employee : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             var movementTarget = slot.Target;
             movementController.SetMovementTarget(movementTarget, () =>
             {
-                Debug.Log("Target reached");
+//                Debug.Log("Target reached");
                 SetState(EmployeeState.Break);
             });
         }
@@ -86,6 +86,11 @@ public class Employee : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         }
     }
 
+    public void AssignWorkStation(WorkStation workStation)
+    {
+        this.workStation = workStation;
+    }
+    
     public void MoveToWorkStation()
     {
         RemoveFromAssignedBreakLocation();
@@ -94,7 +99,7 @@ public class Employee : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         var movementTarget = workStation.GetTargetSlot();
         movementController.SetMovementTarget(movementTarget, () =>
         {
-            Debug.Log("Workstation reached");
+//            Debug.Log("Workstation reached");
             SetState(EmployeeState.Working);
         });
     }
