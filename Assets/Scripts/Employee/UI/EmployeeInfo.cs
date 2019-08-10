@@ -54,6 +54,7 @@ public class EmployeeInfo : MonoBehaviour
     {
         isExpanded = expanded;
         stateText.gameObject.SetActive(expanded);
-        panel.sizeDelta = new Vector2(expanded ? 250 : 150, expanded ? 100 : 70);
+        nameText.gameObject.SetActive(expanded);
+        panel.sizeDelta = new Vector2(expanded ? 250 : 120, expanded ? 100 : 42);
     }
 }
