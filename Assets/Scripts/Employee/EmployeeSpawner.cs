@@ -22,7 +22,7 @@ public class EmployeeSpawner : MonoBehaviour
     // Start of day
     private IEnumerator SpawnEmployees()
     {
-        foreach (var workStation in workStations.Take(5))
+        foreach (var workStation in workStations.Take(15))
         {
             SpawnEmployee(workStation);
             yield return new WaitForSeconds(1f);
