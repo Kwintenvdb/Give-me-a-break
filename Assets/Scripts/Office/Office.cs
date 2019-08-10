@@ -8,7 +8,6 @@ public class Office : MonoBehaviour
     [SerializeField] private BreakLocation lunchRoom;
     [SerializeField] private BreakLocation toilets;
     [SerializeField] private float moneyBalance = 0;
-    [SerializeField] private BackgroundMusicController backgroundMusicController;
 
     // Office State
     [SerializeField] private OfficeState state;

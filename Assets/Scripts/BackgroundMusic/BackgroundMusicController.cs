@@ -11,9 +11,9 @@ public class BackgroundMusicController : MonoBehaviour
     [SerializeField] private AudioClip tenseLoop;
     [SerializeField] private AudioClip riotLoop;
     [SerializeField] private List<AudioSource> audioSourceArray;
+    [SerializeField] private Office office;
 
     private int selectedAudioSourceIndex = 0;
-    private Office _office;
     private OfficeState previousOfficeState;
     private BackgroundMusicState state;
     private double nextStartTime;
@@ -21,9 +21,8 @@ public class BackgroundMusicController : MonoBehaviour
 
     private void Start()
     {
-        _office = FindObjectOfType<Office>();
         state = BackgroundMusicState.Intro;
-        nextStartTime = AudioSettings.dspTime + 0.5;
+        nextStartTime = AudioSettings.dspTime + 2;
         previousOfficeState = OfficeState.Chill;
         nextClip = GetNextClip();
         playNext(nextClip);
@@ -34,7 +33,7 @@ public class BackgroundMusicController : MonoBehaviour
         if (AudioSettings.dspTime > nextStartTime - 1)
         {
             nextClip = GetNextClip();
-            Debug.Log("Office State: " + _office.State);
+            Debug.Log("Office State: " + office.State);
             Debug.Log("Next Clip: " + nextClip.name);
             playNext(nextClip);
         }
@@ -44,7 +43,7 @@ public class BackgroundMusicController : MonoBehaviour
     {
         // Loads the next Clip to play and schedules when it will start
         audioSourceArray[selectedAudioSourceIndex].clip = clipToPlay;
-        audioSourceArray[selectedAudioSourceIndex].PlayScheduled(nextStartTime);
+        audioSourceArray[selectedAudioSourceIndex].PlayScheduled(nextStartTime-0.05);
 
         // Checks how long the Clip will last and updates the Next Start Time with a new value
         double duration = (double) clipToPlay.samples / clipToPlay.frequency;
@@ -56,12 +55,14 @@ public class BackgroundMusicController : MonoBehaviour
 
     private AudioClip GetNextClip()
     {
-        if (previousOfficeState != _office.State)
+        if (previousOfficeState != office.State)
         {
             state = BackgroundMusicState.Intro;
         }
 
-        switch (_office.State)
+        previousOfficeState = office.State;
+
+        switch (office.State)
         {
             case OfficeState.Chill:
                 if (state == BackgroundMusicState.Intro)
