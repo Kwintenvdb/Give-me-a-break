@@ -11,7 +11,7 @@ public class EmployeeInfo : MonoBehaviour
 
     private bool isExpanded = false;
 
-    private void Awake()
+    private void Start()
     {
         nameText.text = employee.EmployeeName;
     }
