@@ -52,22 +52,16 @@ public class Employee : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
         if (stressConsumerController.IsOverstressed && state != EmployeeState.OverStressed)
         {
             Died?.Invoke(this);
+            SpawnParticles();
             
             SetState(EmployeeState.OverStressed);
             movementController.StopWalking();
             Destroy(gameObject);
         }
     }
-
-    private bool isQuitting = false;
-    private void OnApplicationQuit()
+    
+    private void SpawnParticles()
     {
-        isQuitting = true;
-    }
-
-    private void OnDestroy()
-    {
-        if (isQuitting) return;
         var pos = transform.position + new Vector3(0, 2.5f, 0);
         Instantiate(explosionPrefab, pos, Quaternion.identity);
     }
