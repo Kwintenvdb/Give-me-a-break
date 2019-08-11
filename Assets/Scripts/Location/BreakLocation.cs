@@ -8,6 +8,7 @@ public class BreakLocation : MonoBehaviour
     [SerializeField] private string locationName;
 
     public string LocationName => locationName;
+    public bool HasFreeSlots => GetFreeSlot() != null;
 
     public LocationSlot AssignEmployeeToFreeSlot(Employee employee)
     {

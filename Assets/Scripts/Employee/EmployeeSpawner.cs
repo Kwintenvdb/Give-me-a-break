@@ -74,8 +74,11 @@ public class EmployeeSpawner : MonoBehaviour
     {
         var freeWorkStation = FindFreeWorkStations()
             .OrderBy(a => Random.Range(0, 1))
-            .First();
-        SpawnEmployee(freeWorkStation);
+            .FirstOrDefault();
+        if (freeWorkStation != null)
+        {
+            SpawnEmployee(freeWorkStation);
+        }
     }
 
     public IEnumerable<WorkStation> FindFreeWorkStations()
