@@ -66,6 +66,11 @@ public class Employee : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
             movementController.StopWalking();
             Destroy(gameObject);
         }
+
+        if (stressConsumerController.PercentageStressLevel <= 0.00005 && AssignedBreakLocation?.name == "LunchRoom")
+        {
+            MoveToWorkStation();
+        }
     }
     
     private void SpawnParticles()

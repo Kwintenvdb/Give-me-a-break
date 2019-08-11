@@ -13,8 +13,11 @@ public class EmployeeSpawner : MonoBehaviour
     [SerializeField] private float maxStressLevel = 30;
     [SerializeField] private int initialWorkerCount = 25;
 
-    [SerializeField] private float employeeSpawnTimeMin = 0.5f;
-    [SerializeField] private float employeeSpawnTimeMax = 1f;
+    [SerializeField] private float employeeSpawnTimeMinMorning = 0.2f;
+    [SerializeField] private float employeeSpawnTimeMaxMorning = 0.8f;
+    
+    [SerializeField] private float employeeSpawnTimeMin = 1;
+    [SerializeField] private float employeeSpawnTimeMax = 4;
 
     private List<String> employeeNames = new List<string>
     {
@@ -47,11 +50,12 @@ public class EmployeeSpawner : MonoBehaviour
     private void Awake()
     {
         _workStations = FindObjectsOfType<WorkStation>().ToList();
+        StartCoroutine(SpawnInitialEmployees());
         StartCoroutine(SpawnEmployees());
     }
 
     // Start of day
-    private IEnumerator SpawnEmployees()
+    private IEnumerator SpawnInitialEmployees()
     {
         foreach (var workStation in _workStations
             .OrderBy(a => Random.Range(0, 1))
@@ -60,9 +64,19 @@ public class EmployeeSpawner : MonoBehaviour
             if (IsWorkStationFree(workStation))
             {
                 SpawnEmployee(workStation);
-                float timeTillNextSpawn = Random.Range(employeeSpawnTimeMin, employeeSpawnTimeMax);
+                float timeTillNextSpawn = Random.Range(employeeSpawnTimeMinMorning, employeeSpawnTimeMaxMorning);
                 yield return new WaitForSeconds(timeTillNextSpawn);
             }
+        }
+    }
+
+    private IEnumerator SpawnEmployees()
+    {
+        while (true)
+        {
+            HireNewEmployee();
+            float timeTillNextSpawn = Random.Range(employeeSpawnTimeMin, employeeSpawnTimeMax);
+            yield return new WaitForSeconds(timeTillNextSpawn);    
         }
     }
 
