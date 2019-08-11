@@ -17,7 +17,7 @@ Office simulation
 * micromanagement/stress game, humor
 
 ### Sources Used:
-Flush Sound: CC0_ReMaster » Sfx_05_flush.wav by ptonic, CC0 1.0 (as is, https://freesound.org/people/ptonic/sounds/411242/)
-Background Music: office tunes by Tobaay, used with permission (as is, https://github.com/Tobaay/Catalysts-Game-Jam-Sound-Effects/tree/master/office%20tunes)
-Cat Sprites: Catalysts Sticker Postcards by Catalysts Marketing Team (digitaly modified, https://www.catalysts.cc/)
-Explosion Sound: battle fx » explosion.1.wav by alienbomb, CC0 1.0 (as is, https://freesound.org/people/alienbomb/sounds/39068/)
+* Flush Sound: CC0_ReMaster » Sfx_05_flush.wav by ptonic, CC0 1.0 (as is, https://freesound.org/people/ptonic/sounds/411242/)
+* Background Music: office tunes by Tobaay, used with permission (as is, https://github.com/Tobaay/Catalysts-Game-Jam-Sound-Effects/tree/master/office%20tunes)
+* Cat Sprites & Catalysts Logo: CI by Catalysts Marketing Team (digitaly modified, all rights reserved, https://www.catalysts.cc/)
+* Explosion Sound: battle fx » explosion.1.wav by alienbomb, CC0 1.0 (as is, https://freesound.org/people/alienbomb/sounds/39068/)
