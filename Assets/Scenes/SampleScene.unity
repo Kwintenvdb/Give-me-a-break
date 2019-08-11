@@ -7108,8 +7108,8 @@ MonoBehaviour:
   vacation: {fileID: 1782558315}
   moneyBalance: 0
   state: 0
-  officeStateTenseLevel: 0.33
-  officeStateRiotLevel: 0.66
+  officeStateTenseLevel: 0.25
+  officeStateRiotLevel: 0.4
   stressBar: {fileID: 737071497}
   moneyDisplay: {fileID: 1337848342}
   spawner: {fileID: 909928334}
