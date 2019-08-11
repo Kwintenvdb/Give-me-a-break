@@ -760,7 +760,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f7ff7422a027e447bd2cb51a0398ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseMoneyPerSecond: 1471.3
+  baseMoneyPerSecond: 14713.3
+  seniorityAge: 60
   baseMoneyActiveStates: 00000000
 --- !u!1 &4023627043451158251
 GameObject:

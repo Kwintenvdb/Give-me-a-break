@@ -22,9 +22,10 @@ public class Employee : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
     public EmployeeState State => state;
     public string EmployeeName => employeeName;
     public float PercentageStressLevel => stressConsumerController.PercentageStressLevel;
-
     public WorkStation AssignedWorkStation => workStation;
     public BreakLocation AssignedBreakLocation { get; private set; }
+    public float Born { get; private set; }
+    public float Age => Time.timeSinceLevelLoad - Born;
 
     public event Action<Employee> Died;
 
@@ -39,6 +40,7 @@ public class Employee : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
 
     private void Start()
     {
+        Born = Time.timeSinceLevelLoad;
         if (workStation == null)
         {
             throw new InvalidOperationException("Employee does not have a Workstation");
