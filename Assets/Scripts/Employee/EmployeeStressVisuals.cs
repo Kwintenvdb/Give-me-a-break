@@ -21,27 +21,27 @@ public class EmployeeStressVisuals : MonoBehaviour
     private Sprite GetSprite(float stressLevel)
     {
         animator.SetBool("Pulsate", false);
-        if (stressLevel <= 0.15f)
+        if (stressLevel <= 0.1f)
         {
             return happy;
         }
-        if (stressLevel <= 0.3f)
+        if (stressLevel <= 0.2f)
         {
             return satisfied;
         }
-        if (stressLevel <= 0.45f)
+        if (stressLevel <= 0.3f)
         {
             return average;
         }
-        if (stressLevel <= 0.6f)
+        if (stressLevel <= 0.45f)
         {
             return sad;
         }
-        if (stressLevel <= 0.75f)
+        if (stressLevel <= 0.65f)
         {
             return exhausted;
         }
-        if (stressLevel <= 0.9f)
+        if (stressLevel <= 0.8f)
         {
             animator.SetBool("Pulsate", true);
             return scared;
