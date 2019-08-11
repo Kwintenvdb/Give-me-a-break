@@ -8,7 +8,6 @@ public class Employee : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
     [SerializeField] private StressConsumerController stressConsumerController;
     [SerializeField] private MoneyConsumerController moneyConsumerController;
     [SerializeField] private MovementController movementController;
-    [SerializeField] private AudioController audioController;
     [SerializeField] private EmployeeState state;
     [SerializeField] private WorkStation workStation; // Every employee must have a reference to their work station
     [SerializeField] private string employeeName;
@@ -56,8 +55,7 @@ public class Employee : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
             
             SetState(EmployeeState.OverStressed);
             movementController.StopWalking();
-            audioController.PlayDeathClip();
-            Destroy(gameObject, 7);
+            Destroy(gameObject);
         }
     }
 
