@@ -3724,7 +3724,7 @@ MonoBehaviour:
   spawnLocation: {fileID: 716609535}
   minStressLevel: 10
   maxStressLevel: 40
-  initialWorkerCount: 1
+  initialWorkerCount: 20
   employeeSpawnTimeMin: 0.5
   employeeSpawnTimeMax: 1
 --- !u!4 &909928335
@@ -4674,7 +4674,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5958,7 +5958,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
