@@ -60,3 +60,4 @@ crashlytics-build.properties
 
 # IDEA files
 .idea/
+/ProjectSettings/ProBuilderSettings.json
