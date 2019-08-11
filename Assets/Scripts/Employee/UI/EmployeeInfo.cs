@@ -22,7 +22,11 @@ public class EmployeeInfo : MonoBehaviour
         stressLevelText.text = isExpanded
             ? $"{stressAsPercentage:N}% stressed"
             : $"{stressAsPercentage:N}%";
-        stateText.text = GetStateText(employee);
+
+        if (isExpanded)
+        {
+            stateText.text = GetStateText(employee);
+        }
     }
 
     private string GetStateText(Employee employee)
