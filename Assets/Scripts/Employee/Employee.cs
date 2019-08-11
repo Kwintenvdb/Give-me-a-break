@@ -88,7 +88,7 @@ public class Employee : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
     {
         SetVisible(false);
         SelectionController.Instance.DeselectEmployee(this);
-        yield return new WaitForSeconds(15);
+        yield return new WaitForSeconds(8);
         SetVisible(true);
         MoveToWorkStation();
     }
