@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fa38a607ef37d648b3d0e78416db784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stressPerSecond: 0.4
+  stressPerSecond: 10
   stressMultiplierPerSecond: 1
   stressFixed: 0
   activeStates: 00000000
@@ -885,6 +885,8 @@ MonoBehaviour:
   selectionObject: {fileID: 1171034754843963205}
   stressVisuals: {fileID: 119792053169605945}
   renderer: {fileID: 4023627043374658699}
+  explosionPrefab: {fileID: 4709020458935143095, guid: 1310980f127b9034b8cefb8048673c19,
+    type: 3}
 --- !u!114 &4023627043451219491
 MonoBehaviour:
   m_ObjectHideFlags: 0

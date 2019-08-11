@@ -16,6 +16,7 @@ public class Employee : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
     [SerializeField] private GameObject selectionObject;
     [SerializeField] private EmployeeStressVisuals stressVisuals;
     [SerializeField] private GameObject renderer;
+    [SerializeField] private ParticleSystem explosionPrefab;
 
     public StressConsumerController StressConsumerController => stressConsumerController;
     public MoneyConsumerController MoneyConsumerController => moneyConsumerController;
@@ -56,8 +57,21 @@ public class Employee : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
             SetState(EmployeeState.OverStressed);
             movementController.StopWalking();
             audioController.PlayDeathClip();
-            Destroy(gameObject, 9);
+            Destroy(gameObject, 7);
         }
+    }
+
+    private bool isQuitting = false;
+    private void OnApplicationQuit()
+    {
+        isQuitting = true;
+    }
+
+    private void OnDestroy()
+    {
+        if (isQuitting) return;
+        var pos = transform.position + new Vector3(0, 4, 0);
+        Instantiate(explosionPrefab, pos, Quaternion.identity);
     }
 
     public void SendOnVacation(BreakLocation vacation)
