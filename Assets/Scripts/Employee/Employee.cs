@@ -16,7 +16,8 @@ public class Employee : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
     [SerializeField] private EmployeeStressVisuals stressVisuals;
     [SerializeField] private GameObject renderer;
     [SerializeField] private ParticleSystem explosionPrefab;
-
+    [SerializeField] private GameObject beard;
+    
     public StressConsumerController StressConsumerController => stressConsumerController;
     public MoneyConsumerController MoneyConsumerController => moneyConsumerController;
     public EmployeeState State => state;
@@ -50,6 +51,11 @@ public class Employee : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
     void Update()
     {
         stressVisuals.SetStressLevel(PercentageStressLevel, state, AssignedBreakLocation);
+
+        if (Age >= moneyConsumerController.SeniorityAge)
+        {
+            beard.SetActive(true);
+        }
         
         if (stressConsumerController.IsOverstressed && state != EmployeeState.OverStressed)
         {

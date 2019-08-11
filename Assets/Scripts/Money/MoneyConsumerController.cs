@@ -11,6 +11,7 @@ public class MoneyConsumerController : MonoBehaviour
     [SerializeField] private List<EmployeeState> baseMoneyActiveStates = new List<EmployeeState>{EmployeeState.Working};
 
     public Employee Employee { get; set; }
+    public float SeniorityAge => seniorityAge;
 
     private readonly List<MoneyGeneratorController> _moneyGenerators = new List<MoneyGeneratorController>();
 
@@ -26,7 +27,6 @@ public class MoneyConsumerController : MonoBehaviour
             throw new InvalidOperationException("MoneyConsumerController has no Employee");
         }
     }
-
 
     public float CalculateMoneyGenerated()
     {
