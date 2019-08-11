@@ -3722,12 +3722,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawner: {fileID: 909928334}
-  buttonsToToggle:
-  - {fileID: 148867397}
-  - {fileID: 1305573545}
-  - {fileID: 347655083}
-  - {fileID: 804152622}
+  backToWorkButton: {fileID: 148867397}
   hireButton: {fileID: 251003973}
+  breakLocationButtons:
+  - button: {fileID: 1305573545}
+    relatedBreakLocation: {fileID: 176024007}
+  - button: {fileID: 347655083}
+    relatedBreakLocation: {fileID: 810951758}
+  - button: {fileID: 804152622}
+    relatedBreakLocation: {fileID: 1782558315}
+  buttonsWithHotkeys:
+  - button: {fileID: 148867397}
+    key: 101
+    relatedBreakLocation: {fileID: 0}
+  - button: {fileID: 1305573545}
+    key: 114
+    relatedBreakLocation: {fileID: 176024007}
+  - button: {fileID: 347655083}
+    key: 116
+    relatedBreakLocation: {fileID: 810951758}
+  - button: {fileID: 804152622}
+    key: 121
+    relatedBreakLocation: {fileID: 1782558315}
+  - button: {fileID: 251003973}
+    key: 117
+    relatedBreakLocation: {fileID: 0}
 --- !u!1 &909928333
 GameObject:
   m_ObjectHideFlags: 0
