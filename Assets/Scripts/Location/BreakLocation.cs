@@ -6,6 +6,7 @@ public class BreakLocation : MonoBehaviour
 {
     [SerializeField] private List<LocationSlot> slots = new List<LocationSlot>();
     [SerializeField] private string locationName;
+    [SerializeField] private AudioSource audioSource;
 
     public string LocationName => locationName;
     public bool HasFreeSlots => GetFreeSlot() != null;
@@ -26,6 +27,11 @@ public class BreakLocation : MonoBehaviour
         if (assignedSlot != null)
         {
             assignedSlot.RemoveAssignedEmployee();
+            
+            if (employee.State == EmployeeState.Break && audioSource != null)
+            {
+                audioSource.Play();
+            }
         }
     }
     
