@@ -70,7 +70,7 @@ public class Employee : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
     private void OnDestroy()
     {
         if (isQuitting) return;
-        var pos = transform.position + new Vector3(0, 4, 0);
+        var pos = transform.position + new Vector3(0, 2.5f, 0);
         Instantiate(explosionPrefab, pos, Quaternion.identity);
     }
 
