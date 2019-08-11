@@ -20,14 +20,17 @@ public class Office : MonoBehaviour
     // UI
     [SerializeField] private StressBar stressBar;
     [SerializeField] private MoneyDisplay moneyDisplay;
+    
+    // Employees
+    [SerializeField] private EmployeeSpawner spawner;
 
     public OfficeState State => state;
     public float MoneyBalance => moneyBalance;
 
     void Update()
     {
-        var employees = FindObjectsOfType<Employee>();
-        if (employees.Length > 0)
+        var employees = spawner.Employees;
+        if (employees.Count > 0)
         {
             CalculateAveragePercentageStress(employees);
             UpdateMoneyBalance(employees);

@@ -117,6 +117,11 @@ public class Employee : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
     {
         this.workStation = workStation;
     }
+
+    public void RemoveAssignedWorkStation()
+    {
+        workStation = null;
+    }
     
     public void MoveToWorkStation()
     {
