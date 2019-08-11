@@ -146,6 +146,11 @@ public class Employee : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
         });
     }
 
+    public void SetName(string name)
+    {
+        employeeName = name;
+    }
+
     private void SetState(EmployeeState state)
     {
         this.state = state;

@@ -38,13 +38,12 @@ public class MoneyConsumerController : MonoBehaviour
         
         var moneyGenerators = _moneyGenerators.Where(generator => generator.ActiveStates.Contains(Employee.State))
             .ToList();
-        moneyPerSecond += moneyGenerators
-                                 .Sum(generator => generator.MoneyPerSecond);
+        moneyPerSecond += moneyGenerators.Sum(generator => generator.MoneyPerSecond);
         moneyPerSecond *= moneyGenerators
             .Select(generator => generator.MoneyMultiplierPerSecond)
             .Aggregate(1f, (product, moneyMultiplier) => product * moneyMultiplier);
 
-        return moneyPerSecond;
+        return moneyPerSecond * Time.deltaTime;
     }
 
     private void OnTriggerEnter(Collider other)
