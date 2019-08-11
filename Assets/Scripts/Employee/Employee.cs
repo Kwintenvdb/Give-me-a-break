@@ -67,7 +67,7 @@ public class Employee : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
             Destroy(gameObject);
         }
 
-        if (stressConsumerController.PercentageStressLevel <= 0.00005 && AssignedBreakLocation?.name == "LunchRoom")
+        if (stressConsumerController.PercentageStressLevel <= 0.00005 && State == EmployeeState.Break && renderer.activeSelf)
         {
             MoveToWorkStation();
         }
