@@ -11,11 +11,19 @@ public class EmployeeStressVisuals : MonoBehaviour
     [SerializeField] private Sprite exhausted;
     [SerializeField] private Sprite scared;
     [SerializeField] private Sprite superScared;
+    [SerializeField] private Sprite silly;
     
-    public void SetStressLevel(float stressLevel)
+    public void SetStressLevel(float stressLevel, EmployeeState employeeState, BreakLocation assignedBreakLocation)
     {
-        var sprite = GetSprite(stressLevel);
-        renderer.sprite = sprite;
+        if (employeeState == EmployeeState.Break && assignedBreakLocation?.LocationName == "Toilet")
+        {
+            renderer.sprite = silly;
+        }
+        else
+        {
+            var sprite = GetSprite(stressLevel);
+            renderer.sprite = sprite;
+        }
     }
 
     private Sprite GetSprite(float stressLevel)
