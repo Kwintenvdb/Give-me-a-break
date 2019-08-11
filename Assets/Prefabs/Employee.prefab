@@ -761,7 +761,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseMoneyPerSecond: 14713.3
-  seniorityAge: 60
+  seniorityAge: 40
   baseMoneyActiveStates: 00000000
 --- !u!1 &4023627043451158251
 GameObject:
