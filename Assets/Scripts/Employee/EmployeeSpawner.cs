@@ -19,6 +19,8 @@ public class EmployeeSpawner : MonoBehaviour
     private List<WorkStation> _workStations;
     public List<Employee> Employees { get; } = new List<Employee>();
     public int EmployeesDied { get; private set; }
+
+    public event Action NumEmployeesChanged;
     
     private void Awake()
     {
@@ -33,9 +35,12 @@ public class EmployeeSpawner : MonoBehaviour
             .OrderBy(a => Random.Range(0, 1))
             .Take(initialWorkerCount))
         {
-            SpawnEmployee(workStation);
-            float timeTillNextSpawn = Random.Range(employeeSpawnTimeMin, employeeSpawnTimeMax);
-            yield return new WaitForSeconds(timeTillNextSpawn);
+            if (IsWorkStationFree(workStation))
+            {
+                SpawnEmployee(workStation);
+                float timeTillNextSpawn = Random.Range(employeeSpawnTimeMin, employeeSpawnTimeMax);
+                yield return new WaitForSeconds(timeTillNextSpawn);
+            }
         }
     }
 
@@ -50,6 +55,7 @@ public class EmployeeSpawner : MonoBehaviour
         employee.StressConsumerController.SetBaseStress(baseStress);
         
         Employees.Add(employee);
+        NumEmployeesChanged?.Invoke();
         RegisterEmployeeDeathEvent(employee);
     }
 
@@ -60,19 +66,26 @@ public class EmployeeSpawner : MonoBehaviour
             e.RemoveAssignedWorkStation();
             Employees.Remove(e);
             EmployeesDied++;
+            NumEmployeesChanged?.Invoke();
         };
     }
 
     public void HireNewEmployee()
     {
-        var occupiedWorkStations = Employees
-            .Select(employee => employee.AssignedWorkStation);
-        var freeWorkStation = _workStations
-            .Where(station => !occupiedWorkStations.Contains(station))
+        var freeWorkStation = FindFreeWorkStations()
             .OrderBy(a => Random.Range(0, 1))
             .First();
-        
-        // TODO add check if no workstation free
         SpawnEmployee(freeWorkStation);
+    }
+
+    public IEnumerable<WorkStation> FindFreeWorkStations()
+    {
+        return _workStations.Where(IsWorkStationFree);
+    }
+
+    private bool IsWorkStationFree(WorkStation workStation)
+    {
+        var occupiedWorkStations = Employees.Select(employee => employee.AssignedWorkStation);
+        return !occupiedWorkStations.Contains(workStation);
     }
 }

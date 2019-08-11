@@ -35,7 +35,6 @@ public class Employee : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
         
         SetSelected(false);
         employeeInfo.SetExpanded(false);
-//        employeeInfo.SetVisible(false);
     }
 
     private void Start()
@@ -56,11 +55,9 @@ public class Employee : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
             
             SetState(EmployeeState.OverStressed);
             movementController.StopWalking();
-//            renderer.material.color = Color.red;
             audioController.PlayDeathClip();
             Destroy(gameObject, 9);
         }
-        // show different visual states based on stress level
     }
 
     public void SendOnVacation(BreakLocation vacation)
@@ -131,7 +128,6 @@ public class Employee : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
         var movementTarget = workStation.GetTargetSlot();
         movementController.SetMovementTarget(movementTarget, () =>
         {
-//            Debug.Log("Workstation reached");
             SetState(EmployeeState.Working);
         });
     }
@@ -155,12 +151,10 @@ public class Employee : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
     public void OnPointerEnter(PointerEventData eventData)
     {
         employeeInfo.SetExpanded(true);
-//        employeeInfo.SetVisible(true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         employeeInfo.SetExpanded(false);
-//        employeeInfo.SetVisible(false);
     }
 }
