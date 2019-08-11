@@ -48,7 +48,7 @@ public class Employee : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
 
     void Update()
     {
-        stressVisuals.SetStressLevel(PercentageStressLevel);
+        stressVisuals.SetStressLevel(PercentageStressLevel, state, AssignedBreakLocation);
         
         if (stressConsumerController.IsOverstressed && state != EmployeeState.OverStressed)
         {
