@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GoalManager : MonoBehaviour
 {
     [SerializeField] private Office office;
+    [SerializeField] private EmployeeSpawner spawner;
     [SerializeField] private int days = 365;
     [SerializeField] private float secondsPerDay = 1f;
     [SerializeField] private Text remainingDaysText;
@@ -46,7 +47,7 @@ public class GoalManager : MonoBehaviour
     private void OnGameEnd()
     {
         MoneyEarned = office.MoneyBalance;
-        EmployeesKilled = 20; // TODO
+        EmployeesKilled = spawner.EmployeesDied;
         
         SceneManager.LoadScene("EndGameScene", LoadSceneMode.Single);
     }

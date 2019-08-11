@@ -1160,7 +1160,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 909928334}
-        m_MethodName: hireNewEmployee
+        m_MethodName: HireNewEmployee
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3761,6 +3761,8 @@ MonoBehaviour:
   minStressLevel: 10
   maxStressLevel: 40
   initialWorkerCount: 25
+  employeeSpawnTimeMin: 0.5
+  employeeSpawnTimeMax: 1
 --- !u!4 &909928335
 Transform:
   m_ObjectHideFlags: 0
@@ -4209,6 +4211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minSelectionRectSize: 10
+  spawner: {fileID: 909928334}
 --- !u!4 &954179077
 Transform:
   m_ObjectHideFlags: 0
@@ -6283,6 +6286,7 @@ MonoBehaviour:
   officeStateRiotLevel: 0.66
   stressBar: {fileID: 737071497}
   moneyDisplay: {fileID: 1337848342}
+  spawner: {fileID: 909928334}
 --- !u!4 &1477483797
 Transform:
   m_ObjectHideFlags: 0
@@ -6335,6 +6339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   office: {fileID: 1477483796}
+  spawner: {fileID: 909928334}
   days: 365
   secondsPerDay: 0.3
   remainingDaysText: {fileID: 1279806907}

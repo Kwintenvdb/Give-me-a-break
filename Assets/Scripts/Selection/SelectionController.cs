@@ -6,6 +6,7 @@ using UnityEngine;
 public class SelectionController : MonoBehaviour
 {
     [SerializeField] private float minSelectionRectSize = 10f;
+    [SerializeField] private EmployeeSpawner spawner;
     
     public static SelectionController Instance { get; private set; }
     public List<Employee> SelectedEmployees { get; } = new List<Employee>();
@@ -81,7 +82,7 @@ public class SelectionController : MonoBehaviour
     private void FindEmployeesInRect(Rect rect)
     {
         var screenRect = GUIUtility.GUIToScreenRect(rect);
-        var employees = FindObjectsOfType<Employee>().Where(CanBeSelected);
+        var employees = spawner.Employees.Where(CanBeSelected);
         var mainCam = Camera.main;
         foreach (var employee in employees)
         {
