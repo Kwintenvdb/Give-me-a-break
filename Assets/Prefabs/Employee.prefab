@@ -262,6 +262,7 @@ MonoBehaviour:
   exhausted: {fileID: 21300000, guid: 8ce17d864e1f3c24c818fa45ae35bd10, type: 3}
   scared: {fileID: 21300000, guid: d363962090b194042be56fcfc5aa46d5, type: 3}
   superScared: {fileID: 21300000, guid: 7f34ed1d8cdb017459cfcc2c301120c6, type: 3}
+  silly: {fileID: 21300000, guid: cb131e0363902384e947e8f9d1490f4f, type: 3}
 --- !u!95 &633786677923085060
 Animator:
   serializedVersion: 3
