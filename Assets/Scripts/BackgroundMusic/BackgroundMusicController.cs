@@ -33,8 +33,6 @@ public class BackgroundMusicController : MonoBehaviour
         if (AudioSettings.dspTime > nextStartTime - 1)
         {
             nextClip = GetNextClip();
-            Debug.Log("Office State: " + office.State);
-            Debug.Log("Next Clip: " + nextClip.name);
             playNext(nextClip);
         }
     }
