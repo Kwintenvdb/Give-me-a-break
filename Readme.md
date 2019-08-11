@@ -15,3 +15,8 @@ Office simulation
 * breaks take time to get there as well
 * cat cats / emotes for employees
 * micromanagement/stress game, humor
+
+### Sources Used:
+Flush Sound: CC0_ReMaster » Sfx_05_flush.wav by ptonic (as is, https://freesound.org/people/ptonic/sounds/411242/)
+Background Music: office tunes by Tobaay (as is, https://github.com/Tobaay/Catalysts-Game-Jam-Sound-Effects/tree/master/office%20tunes)
+Cat Sprites: Catalysts Sticker Postcards by Catalysts Marketing Team (digitaly modified, https://www.catalysts.cc/)
