@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4414496, g: 0.49029118, b: 0.57031703, a: 1}
+  m_IndirectSpecularColor: {r: 0.4414496, g: 0.49029118, b: 0.5703171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3722,11 +3722,13 @@ MonoBehaviour:
   employeePrefab: {fileID: 4023627043451219516, guid: fcee9953246ce96449ce598463e64b70,
     type: 3}
   spawnLocation: {fileID: 716609535}
-  minStressLevel: 10
-  maxStressLevel: 40
-  initialWorkerCount: 20
-  employeeSpawnTimeMin: 0.5
-  employeeSpawnTimeMax: 1
+  minStressLevel: 5
+  maxStressLevel: 30
+  initialWorkerCount: 25
+  employeeSpawnTimeMinMorning: 0.2
+  employeeSpawnTimeMaxMorning: 0.8
+  employeeSpawnTimeMin: 2
+  employeeSpawnTimeMax: 4
 --- !u!4 &909928335
 Transform:
   m_ObjectHideFlags: 0
