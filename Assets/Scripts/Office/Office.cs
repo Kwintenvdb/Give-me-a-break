@@ -10,7 +10,7 @@ public class Office : MonoBehaviour
     [SerializeField] private BreakLocation toilets;
     [SerializeField] private BreakLocation vacation;
     
-    [SerializeField] private float moneyBalance = 0;
+    [SerializeField] private double moneyBalance = 0;
 
     // Office State
     [SerializeField] private OfficeState state;
@@ -25,7 +25,7 @@ public class Office : MonoBehaviour
     [SerializeField] private EmployeeSpawner spawner;
 
     public OfficeState State => state;
-    public float MoneyBalance => moneyBalance;
+    public double MoneyBalance => moneyBalance;
 
     void Update()
     {

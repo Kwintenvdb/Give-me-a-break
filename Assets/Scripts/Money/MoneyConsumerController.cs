@@ -6,7 +6,8 @@ using UnityEngine;
 
 public class MoneyConsumerController : MonoBehaviour
 {
-    [SerializeField] private float baseMoneyPerSecond = 104;
+    [SerializeField] private float baseMoneyPerSecond = 14713.3f;
+    [SerializeField] private float seniorityAge = 60f;
     [SerializeField] private List<EmployeeState> baseMoneyActiveStates = new List<EmployeeState>{EmployeeState.Working};
 
     public Employee Employee { get; set; }
@@ -43,6 +44,10 @@ public class MoneyConsumerController : MonoBehaviour
             .Select(generator => generator.MoneyMultiplierPerSecond)
             .Aggregate(1f, (product, moneyMultiplier) => product * moneyMultiplier);
 
+        // seniority bonus
+        var seniorityMultiplier = 1 + (float) Math.Floor(Employee.Age / seniorityAge);
+        moneyPerSecond *= seniorityMultiplier;
+        
         return moneyPerSecond * Time.deltaTime;
     }
 

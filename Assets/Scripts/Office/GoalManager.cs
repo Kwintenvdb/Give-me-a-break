@@ -11,7 +11,7 @@ public class GoalManager : MonoBehaviour
     [SerializeField] private float secondsPerDay = 1f;
     [SerializeField] private Text remainingDaysText;
 
-    public static float MoneyEarned { get; private set; }
+    public static double MoneyEarned { get; private set; }
     public static float EmployeesKilled { get; private set; }
     
     private int currentDay;

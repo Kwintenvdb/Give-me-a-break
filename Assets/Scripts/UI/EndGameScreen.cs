@@ -9,7 +9,7 @@ public class EndGameScreen : MonoBehaviour
     
     private void Awake()
     {
-        moneyEarnedText.text = $"You made {GoalManager.MoneyEarned:C} Catcoins!";
+        moneyEarnedText.text = $"You made {GoalManager.MoneyEarned:N} Catcoins!";
         employeesKilledText.text = $"...and killed {GoalManager.EmployeesKilled} cats in the process.";
     }
 
