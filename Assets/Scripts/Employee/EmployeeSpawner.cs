@@ -45,7 +45,7 @@ public class EmployeeSpawner : MonoBehaviour
         employee.StressConsumerController.SetBaseStress(baseStress);
     }
 
-    public void hireNewEmployee()
+    public void HireNewEmployee()
     {
         var occupiedWorkStations = FindObjectsOfType<Employee>()
             .Select(employee => employee.AssignedWorkStation);
